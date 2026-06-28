@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoobaan Construction Company</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="img/HomePage_photos/companyLogo-favicon.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="img/HomePage_photos/companyLogo-favicon.png"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                navy: "#061B49",
+                blue: "#00388D",
+                red: "#AA182C",
+                white: "#FFFFFF",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            boxShadow: {
+              glowBlue: "0 0 32px rgba(67, 148, 255, 0.36)",
+              glowRed: "0 0 32px rgba(224, 28, 45, 0.32)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --navy: #061b49;
+        --blue: #00388d;
+        --red: #aa182c;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #061b49;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .video-shell {
+        animation: floatCard 6s ease-in-out infinite;
+      }
+
+      .video-shell::before {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        z-index: -2;
+        border-radius: 2rem;
+        background: linear-gradient(
+          115deg,
+          #3fa2ff 0%,
+          rgba(255, 255, 255, 0.28) 45%,
+          #ff283f 100%
+        );
+        filter: drop-shadow(0 0 18px rgba(63, 162, 255, 0.55))
+          drop-shadow(0 0 18px rgba(255, 40, 63, 0.42));
+      }
+
+      .video-shell::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 2rem;
+        background: linear-gradient(
+          105deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.18) 42%,
+          transparent 58%
+        );
+        transform: translateX(-120%);
+        animation: shine 4.5s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .dot-field {
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.14) 1px,
+          transparent 1px
+        );
+        background-size: 18px 18px;
+      }
+
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes shine {
+        0%,
+        45% {
+          transform: translateX(-120%);
+        }
+        75%,
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="font-sans text-white antialiased">
+  <nav class="sticky left-0 top-4 z-[100] w-full px-4 sm:px-6">
+  <div
+    class="relative z-[130] mx-auto flex h-20 max-w-7xl items-center justify-between rounded-2xl border border-white/20 bg-brand-navy/90 px-4 shadow-[0_18px_50px_rgba(0,0,0,0.26)] ring-1 ring-white/10 backdrop-blur-xl sm:px-6 lg:px-7"
+  >
+    <!-- Logo + Brand -->
+    <a href="Home.html" class="relative z-[120] flex items-center gap-3">
+      <span
+        class="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"
+      >
+        <img
+          src="img/HomePage_photos/companyLogo.jpg"
+          alt="Hoobaan Construction Company Logo"
+          class="h-full w-full object-contain"
+        />
+      </span>
+
+      <span class="leading-none">
+        <span class="block text-xl font-black tracking-tight text-white sm:text-2xl">
+          HOOBAAN
+        </span>
+        <span
+          class="mt-1 block text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/65 sm:text-[10px]"
+        >
+          Construction Company
+        </span>
+      </span>
+    </a>
+
+    <!-- Desktop Links -->
+    <div
+      class="hidden items-center gap-10 text-base font-extrabold text-white lg:flex"
+    >
+      <a
+        href="Home.html"
+        class="relative text-brand-red transition-colors duration-300"
+      >
+        Home
+        <span
+          class="absolute -bottom-2 left-1/2 h-0.5 w-7 -translate-x-1/2 rounded-full bg-brand-red"
+        ></span>
+      </a>
+
+      <a
+        href="about.html"
+        class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+      >
+        About
+      </a>
+
+      <a
+        href="services.html"
+        class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+      >
+        Services
+      </a>
+
+      <a
+        href="Projects.html"
+        class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+      >
+        Projects
+      </a>
+    </div>
+
+    <!-- Desktop Contact Button -->
+    <a
+      href="#contact"
+      class="hidden items-center gap-2 rounded-xl bg-brand-red px-5 py-3 text-sm font-extrabold text-white shadow-[0_10px_22px_rgba(6,27,73,0.24)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#991b1b] lg:inline-flex"
+    >
+      <svg
+        class="h-4 w-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.2"
+          d="M3 5.5A2.5 2.5 0 015.5 3h2.2a1.5 1.5 0 011.42 1.03l.94 2.82a1.5 1.5 0 01-.37 1.52l-1.1 1.1a13.6 13.6 0 005.94 5.94l1.1-1.1a1.5 1.5 0 011.52-.37l2.82.94A1.5 1.5 0 0121 16.3v2.2a2.5 2.5 0 01-2.5 2.5h-.75C9.6 21 3 14.4 3 6.25V5.5z"
+        />
+      </svg>
+      Contact Us
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="relative z-[120] rounded-xl border border-white/20 bg-white/10 p-2.5 text-white shadow-sm transition hover:bg-white/15 lg:hidden"
+      aria-label="Toggle mobile menu"
+    >
+      <svg
+        id="hamburger-icon"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+
+      <svg
+        id="close-icon"
+        class="hidden h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="fixed left-0 top-0 z-[110] flex h-[100dvh] w-[82%] max-w-sm -translate-x-full flex-col border-r border-white/15 bg-brand-navy/95 shadow-2xl backdrop-blur-2xl transition-transform duration-300 ease-in-out"
+  >
+    <div class="flex h-28 items-center px-7">
+      <span class="text-xs font-black uppercase tracking-[0.22em] text-white/50">
+        Menu
+      </span>
+    </div>
+
+    <div class="flex flex-1 flex-col px-7 pb-10">
+      <nav class="flex flex-col gap-2 text-lg font-extrabold text-white">
+        <a
+          href="Home.html"
+          class="flex items-center justify-between rounded-xl bg-brand-red/10 px-4 py-4 text-brand-red"
+        >
+          Home <span>&rarr;</span>
+        </a>
+
+        <a
+          href="about.html"
+          class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+        >
+          About <span>&rarr;</span>
+        </a>
+
+        <a
+          href="services.html"
+          class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+        >
+          Services <span>&rarr;</span>
+        </a>
+
+        <a
+          href="Projects.html"
+          class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+        >
+          Projects <span>&rarr;</span>
+        </a>
+      </nav>
+
+      <div class="mt-auto pt-8">
+        <a
+          href="Home.html#contact"
+          onclick="toggleMenu()"
+          class="block rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay -->
+  <div
+    id="menu-overlay"
+    class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
+    onclick="toggleMenu()"
+  ></div>
+</nav>
+
+    <header
+      class="relative min-h-screen overflow-hidden bg-brand-navy pt-20 sm:pt-24 lg:pt-16"
+    >
+      <div class="absolute inset-0">
+        <img
+          src="img/HomePage_photos/team on-site.jpg"
+          class="h-full w-full object-cover"
+          alt="Hoobaan team working on site"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-[#041A45] via-[#061B49]/80 to-[#061B49]/50"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-[#061B49]/20 via-transparent to-[#061B49]"
+        ></div>
+      </div>
+
+      <div
+        class="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-7xl items-start px-6 pb-16 pt-8 sm:pt-10 lg:px-8 lg:pt-10"
+      >
+        <div class="reveal max-w-2xl">
+          <h1
+            class="text-6xl font-black leading-[0.98] tracking-normal text-white drop-shadow-2xl sm:text-7xl lg:text-8xl"
+          >
+            Building<br />
+            Your <span class="text-[#ff2638]">Vision</span>
+          </h1>
+          <div class="mt-7 h-1 w-24 rounded-full bg-[#ff2638]"></div>
+          <p class="mt-7 max-w-xl text-lg leading-8 text-white/90">
+            Waxaan dhisnaa kaabayaal tayo leh, iyadoo la adeegsanayo khibrad,
+            hal-abuur iyo kalsooni.
+          </p>
+          <p class="mt-4 text-base font-extrabold text-white">
+            We Build Quality. We Build Trust.
+          </p>
+          <div class="mt-24 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="Projects.html"
+              class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-br from-[#f12838] to-brand-red px-7 py-4 text-base font-extrabold text-white shadow-glowRed transition hover:-translate-y-1 hover:scale-[1.02]"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 6V5a2 2 0 012-2h2a2 2 0 012 2v1m-9 0h12a2 2 0 012 2v9a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2zm3 5h6"
+                />
+              </svg>
+              Mashaariicdayada
+            </a>
+            <a
+              href="#video-showcase"
+              class="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/50 bg-brand-navy/40 px-7 py-4 text-base font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white hover:text-brand-navy"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14.75 12l-5.5 3.25v-6.5L14.75 12z"
+                />
+                <circle cx="12" cy="12" r="9" stroke-width="2" />
+              </svg>
+              Daawo Shaqadayada
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section
+      id="video-showcase"
+      class="relative overflow-hidden border-y border-white/10 bg-brand-navy py-20 text-white scroll-mt-28 sm:py-24"
+    >
+      <div class="dot-field absolute left-0 top-8 h-72 w-72 opacity-35"></div>
+      <div
+        class="absolute -left-24 top-52 h-72 w-72 rounded-full border border-blue-300/20 shadow-[0_0_80px_rgba(67,148,255,0.28)]"
+      ></div>
+      <div
+        class="absolute -right-24 bottom-16 h-72 w-72 rounded-full border border-red-300/20 shadow-[0_0_80px_rgba(224,28,45,0.24)]"
+      ></div>
+
+      <div class="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="reveal text-center">
+          <div
+            class="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-extrabold tracking-[0.12em] shadow-glowBlue backdrop-blur"
+          >
+            QUALITY &bull; PRECISION &bull; TRUST
+          </div>
+          <h2
+            class="mt-5 text-4xl font-black tracking-normal text-white sm:text-5xl"
+          >
+            See Our <span class="text-[#ff2638]">Work</span> In Action
+          </h2>
+          <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-[#ff2638]"></div>
+        </div>
+
+        <div class="reveal mt-10 flex justify-center">
+          <div
+            class="video-shell relative w-full max-w-5xl rounded-[2rem] bg-white/10 p-3 shadow-[0_28px_80px_rgba(0,0,0,0.42)] transition duration-500 hover:scale-[1.015]"
+          >
+            <div class="overflow-hidden rounded-[1.6rem] bg-black">
+              <video
+                id="hoobaanVideo"
+                controls
+                preload="metadata"
+                poster="img/team photos/Video thumnail.jpg"
+                class="block aspect-video w-full rounded-[1.6rem] object-cover"
+              >
+                <source src="img/Videos/testimonial.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer
+      id="contact"
+      class="bg-[#061B49] text-white pt-20 pb-10 scroll-mt-28"
+    >
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 mb-16">
+          <div class="space-y-6 pb-10 md:pb-0 md:pr-12">
+            <div class="flex items-center gap-4">
+              <div class="bg-white p-2 rounded-xl">
+                <!--Insert company Logo here-->
+                <img
+                  src="img/HomePage_photos/companyLogo.jpg"
+                  alt="Hoobaan Logo"
+                  class="h-16 w-auto"
+                />
+              </div>
+              <div>
+                <h2
+                  class="text-2xl font-black uppercase tracking-tight text-white leading-none"
+                >
+                  Hoobaan
+                </h2>
+                <p
+                  class="text-[10px] font-bold text-brand-red uppercase tracking-widest mt-1"
+                >
+                  Construction Company
+                </p>
+              </div>
+            </div>
+            <p
+              class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
+            >
+              Hoobaan Construction Company waa hormuudka dhismaha guryaha
+              casriga ah iyo adeegyada injineernimada. Waxaan mudnaanta siinnaa
+              tayada, hufnaanta, iyo qancinta baahiyaha gaarka ah ee
+              macaamiisheena.
+            </p>
+          </div>
+
+          <div
+            class="border-t md:border-t-0 md:border-l border-white/10 pt-10 md:pt-0 md:pl-12 pb-10 md:pb-0"
+          >
+            <h3
+              class="text-lg font-bold uppercase tracking-wider mb-8 pb-2 border-b-2 border-brand-red inline-block"
+            >
+              Quick Links
+            </h3>
+            <ul class="space-y-5">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-brand-red transition-colors flex items-center gap-3 text-sm font-semibold"
+                  ><span class="text-brand-red">→</span> Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-400 hover:text-brand-red transition-colors flex items-center gap-3 text-sm font-semibold"
+                  ><span class="text-brand-red">→</span> About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="services.html"
+                  class="text-gray-400 hover:text-brand-red transition-colors flex items-center gap-3 text-sm font-semibold"
+                  ><span class="text-brand-red">→</span> Our Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Projects.html"
+                  class="text-gray-400 hover:text-brand-red transition-colors flex items-center gap-3 text-sm font-semibold"
+                  ><span class="text-brand-red">→</span> Projects</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="border-t md:border-t-0 md:border-l border-white/10 pt-10 md:pt-0 md:pl-12"
+          >
+            <h3
+              class="text-lg font-bold uppercase tracking-wider mb-2 pb-2 border-b-2 border-brand-red inline-block"
+            >
+              Nala Soo Xidhiidh
+            </h3>
+
+            <div class="space-y-8 mt-6">
+              <div class="flex items-start gap-4">
+                <div
+                  class="bg-white/5 p-3 rounded-lg border border-white/10 text-brand-red shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">
+                    Goobta (Location)
+                  </h4>
+                  <p class="text-gray-400 text-xs mt-1">Hargeisa, Somaliland</p>
+                  <p class="text-gray-400 text-xs mt-1">
+                    Axmed-dhagax,Siinay,Tawfiiq Area
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="bg-white/5 p-3 rounded-lg border border-white/10 text-brand-red shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Email-ka</h4>
+                  <a
+                    href="mailto:hoobaan.cc@gmail.com"
+                    class="text-gray-400 text-xs hover:text-brand-red transition-colors font-medium"
+                    >hoobaan.cc@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="bg-white/5 p-3 rounded-lg border border-white/10 text-brand-red shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-white text-sm mb-3">
+                    Nagala Soo Hadal
+                  </h4>
+                  <div class="grid grid-cols-2 gap-2">
+                    <a
+                      href="tel:0634403775"
+                      class="bg-white/5 p-2 rounded border border-white/10 text-[10px] font-bold text-center text-gray-300 hover:bg-brand-red transition-all"
+                      >063-4403775</a
+                    >
+                    <a
+                      href="tel:0638833011"
+                      class="bg-white/5 p-2 rounded border border-white/10 text-[10px] font-bold text-center text-gray-300 hover:bg-brand-red transition-all"
+                      >063-8833011</a
+                    >
+                    <a
+                      href="tel:0634417828"
+                      class="bg-white/5 p-2 rounded border border-white/10 text-[10px] font-bold text-center text-gray-300 hover:bg-brand-red transition-all"
+                      >063-4417828</a
+                    >
+                    <a
+                      href="tel:0634243269"
+                      class="bg-white/5 p-2 rounded border border-white/10 text-[10px] font-bold text-center text-gray-300 hover:bg-brand-red transition-all"
+                      >063-4243269</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <div class="border-t border-white/10 pt-8 mt-12">
+  <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    <div class="text-left">
+      <p class="text-gray-400 text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold">
+        © 2026 <span class="text-white">Hoobaan Construction Company</span>
+      </p>
+      <p class="text-gray-600 text-[9px] mt-1 uppercase tracking-widest">All Rights Reserved.</p>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="text-gray-500 text-[10px] uppercase tracking-[0.1em] font-bold hidden sm:block">Follow Us:</span>
+      <!--Facebook-->
+      <a href="https://www.facebook.com/HoobaanConstruction" class="group relative">
+        <div class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#1877F2] group-hover:border-[#1877F2] group-hover:shadow-[0_0_15px_rgba(24,119,242,0.4)]">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+        </div>
+        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#b91c1c] transition-all duration-300 group-hover:w-full"></div>
+      </a>
+    <!--Whatsapp-->
+      <a href="https://wa.me/252638833011" class="group relative">
+        <div class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:shadow-[0_0_15px_rgba(37,211,102,0.4)]">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#b91c1c] transition-all duration-300 group-hover:w-full"></div>
+      </a>
+<!--Tiktok-->
+      <a href="https://vm.tiktok.com/ZMHE8BmwTJNwh-nYgQ6/" class="group relative">
+        <div class="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-black group-hover:border-black group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.27 1.76-.23.84-.16 1.74.28 2.48.48.81 1.37 1.39 2.28 1.47.99.07 2.03-.23 2.78-.89.47-.42.81-.99.92-1.61.12-1.39.03-2.79.05-4.19V0z"/>
+            </svg>
+        </div>
+        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#b91c1c] transition-all duration-300 group-hover:w-full"></div>
+    </a>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+    </footer>
+
+
+    <script>
+      const video = document.getElementById("hoobaanVideo");
+      const stopTime = 172;
+
+      if (video) {
+        video.addEventListener("timeupdate", function () {
+          if (this.currentTime >= stopTime) {
+            this.pause();
+            this.currentTime = 0;
+          }
+        });
+      }
+    </script>
+
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("menu-overlay");
+      const hamburger = document.getElementById("hamburger-icon");
+      const closeIcon = document.getElementById("close-icon");
+      const links = document.querySelectorAll("#mobile-menu nav a");
+
+      function toggleMenu() {
+        menu.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+        if (hamburger) hamburger.classList.toggle("hidden");
+        if (closeIcon) closeIcon.classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden");
+      }
+
+      if (btn) btn.addEventListener("click", toggleMenu);
+      if (overlay) overlay.addEventListener("click", toggleMenu);
+
+      links.forEach((link) => {
+        link.addEventListener("click", toggleMenu);
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      menu.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+
+      menu.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        },
+        { passive: true },
+      );
+
+      function handleSwipe() {
+        const swipeDistance = touchStartX - touchEndX;
+        const minSwipeThreshold = 50;
+
+        if (
+          swipeDistance > minSwipeThreshold &&
+          !menu.classList.contains("-translate-x-full")
+        ) {
+          toggleMenu();
+        }
+      }
+    </script>
+
+    <script>
+      const revealItems = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.14 },
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      }
+    </script>
+  </body>
+</html>

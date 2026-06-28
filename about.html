@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Hoobaan Construction Company</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="img/HomePage_photos/companyLogo-favicon.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="img/HomePage_photos/companyLogo-favicon.png"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                navy: "#061B49",
+                blue: "#1A3673",
+                deep: "#0F172A",
+                red: "#B91C1C",
+                light: "#F7F9FB",
+                muted: "#4B5563",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #061b49;
+      }
+
+      .hero-image-panel {
+        clip-path: polygon(17% 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      .hero-white-cut {
+        clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%);
+      }
+
+      .dots {
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.42) 1.2px,
+          transparent 1.2px
+        );
+        background-size: 16px 16px;
+      }
+
+      .blueprint {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+          );
+        background-size: 38px 38px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stat-card {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.1),
+            transparent 34%
+          ),
+          linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.045)
+          );
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 18px 45px rgba(0, 0, 0, 0.2);
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.75),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      .stat-card:hover::before {
+        opacity: 1;
+      }
+
+      .stat-number {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .team-card {
+        position: relative;
+        transform: translateY(0) scale(1);
+        transition:
+          transform 0.32s ease,
+          box-shadow 0.32s ease,
+          border-color 0.32s ease;
+      }
+
+      .team-card:hover {
+        transform: translateY(-0.5rem);
+        border-color: rgba(26, 54, 115, 0.36);
+        box-shadow: 0 25px 60px rgba(26, 54, 115, 0.28);
+      }
+
+      .process-card {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 28% 0%,
+            rgba(255, 255, 255, 0.18),
+            transparent 34%
+          ),
+          linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.045)
+          );
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 0 34px rgba(255, 255, 255, 0.08),
+          0 18px 45px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(18px);
+        transform: translateY(0);
+        transition:
+          opacity 0.75s ease,
+          transform 0.32s ease,
+          border-color 0.32s ease,
+          box-shadow 0.32s ease;
+      }
+
+      .process-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+          inset 0 26px 44px rgba(255, 255, 255, 0.05);
+      }
+
+      .process-card:hover {
+        transform: translateY(-0.5rem);
+        border-color: rgba(255, 255, 255, 0.48);
+        box-shadow:
+          0 0 44px rgba(255, 255, 255, 0.16),
+          0 25px 60px rgba(26, 54, 115, 0.28);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 1023px) {
+        .hero-image-panel,
+        .hero-white-cut {
+          clip-path: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-brand-navy font-sans text-white antialiased">
+    <nav class="sticky left-0 top-4 z-[100] w-full px-4 sm:px-6">
+      <div
+        class="relative z-[130] mx-auto flex h-20 max-w-7xl items-center justify-between rounded-2xl border border-white/20 bg-brand-navy/90 px-4 shadow-[0_18px_50px_rgba(0,0,0,0.26)] ring-1 ring-white/10 backdrop-blur-xl sm:px-6 lg:px-7"
+      >
+        <a href="Home.html" class="relative z-[120] flex items-center gap-3">
+          <span
+            class="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"
+          >
+            <img
+              src="img/HomePage_photos/companyLogo.jpg"
+              alt="Hoobaan Construction Company Logo"
+              class="h-full w-full object-contain"
+            />
+          </span>
+          <span class="leading-none">
+            <span
+              class="block text-xl font-black tracking-tight text-white sm:text-2xl"
+              >HOOBAAN</span
+            >
+            <span
+              class="mt-1 block text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/65 sm:text-[10px]"
+            >
+              Construction Company
+            </span>
+          </span>
+        </a>
+
+        <div
+          class="hidden items-center gap-10 text-base font-extrabold text-white lg:flex"
+        >
+          <a
+            href="Home.html"
+            class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="relative text-brand-red transition-colors duration-300"
+          >
+            About
+            <span
+              class="absolute -bottom-2 left-1/2 h-0.5 w-7 -translate-x-1/2 rounded-full bg-brand-red"
+            ></span>
+          </a>
+          <a
+            href="services.html"
+            class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+            >Services</a
+          >
+          <a
+            href="Projects.html"
+            class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+            >Projects</a
+          >
+        </div>
+
+        <a
+          href="#contact"
+          class="hidden items-center gap-2 rounded-xl bg-brand-red px-5 py-3 text-sm font-extrabold text-white shadow-[0_10px_22px_rgba(6,27,73,0.24)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#991b1b] lg:inline-flex"
+        >
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.2"
+              d="M3 5.5A2.5 2.5 0 015.5 3h2.2a1.5 1.5 0 011.42 1.03l.94 2.82a1.5 1.5 0 01-.37 1.52l-1.1 1.1a13.6 13.6 0 005.94 5.94l1.1-1.1a1.5 1.5 0 011.52-.37l2.82.94A1.5 1.5 0 0121 16.3v2.2a2.5 2.5 0 01-2.5 2.5h-.75C9.6 21 3 14.4 3 6.25V5.5z"
+            />
+          </svg>
+          Contact Us
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          class="relative z-[120] rounded-xl border border-white/20 bg-white/10 p-2.5 text-white shadow-sm transition hover:bg-white/15 lg:hidden"
+          aria-label="Toggle mobile menu"
+        >
+          <svg
+            id="hamburger-icon"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            id="close-icon"
+            class="hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="fixed left-0 top-0 z-[110] flex h-[100dvh] w-[82%] max-w-sm -translate-x-full flex-col border-r border-white/15 bg-brand-navy/95 shadow-2xl backdrop-blur-2xl transition-transform duration-300 ease-in-out"
+      >
+        <div class="flex h-28 items-center px-7">
+          <span
+            class="text-xs font-black uppercase tracking-[0.22em] text-white/50"
+            >Menu</span
+          >
+        </div>
+        <div class="flex flex-1 flex-col px-7 pb-10">
+          <nav class="flex flex-col gap-2 text-lg font-extrabold text-white">
+            <a
+              href="Home.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Home <span>&rarr;</span>
+            </a>
+            <a
+              href="about.html"
+              class="flex items-center justify-between rounded-xl bg-brand-red/10 px-4 py-4 text-brand-red"
+            >
+              About <span>&rarr;</span>
+            </a>
+            <a
+              href="services.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Services <span>&rarr;</span>
+            </a>
+            <a
+              href="Projects.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Projects <span>&rarr;</span>
+            </a>
+          </nav>
+          <div class="mt-auto pt-8">
+            <a
+              href="#contact"
+              onclick="toggleMenu()"
+              class="block rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="menu-overlay"
+        class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
+        onclick="toggleMenu()"
+      ></div>
+    </nav>
+
+    <!-- ===== START ABOUT SECTION REPLACEMENT ===== -->
+    <main class="bg-brand-navy text-white">
+      <section
+        id="about"
+        class="relative overflow-hidden bg-brand-light pt-12 lg:pt-14"
+      >
+        <div class="absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+          <div class="hero-image-panel relative h-full w-full overflow-hidden">
+            <img
+              src="img/About Sample images/Team Onsite background.png"
+              alt="Hoobaan construction team reviewing a project on site"
+              class="h-full w-full object-cover object-[58%_center] transition duration-700 hover:scale-[1.025]"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-brand-navy/28 via-brand-navy/8 to-transparent"
+            ></div>
+            <div
+              class="dots absolute right-20 top-20 h-24 w-32 opacity-35"
+            ></div>
+          </div>
+          <div
+            class="hero-white-cut absolute inset-y-0 -left-[18%] w-[37%] bg-brand-light"
+          ></div>
+
+          <div
+            class="hero-navy-frame absolute left-[9%] top-0 h-full w-20 bg-brand-navy/10"
+          ></div>
+        </div>
+
+        <div
+          class="relative mx-auto grid min-h-[560px] max-w-7xl gap-8 px-6 pb-12 pt-10 lg:grid-cols-[0.86fr_1.14fr] lg:px-8 lg:pb-14"
+        >
+          <div class="reveal max-w-[620px] self-center">
+            <p
+              class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
+            >
+              About Hoobaan
+            </p>
+            <div class="mt-3 h-1 w-14 rounded-full bg-brand-red"></div>
+            <h1
+              class="mt-7 text-5xl font-black leading-[1.03] tracking-[-0.04em] text-brand-navy sm:text-6xl lg:text-[58px] xl:text-[66px]"
+            >
+              Building More<br />
+              Than Structures,<br />
+              <span class="text-brand-red">We Build Trust.</span>
+            </h1>
+            <div class="mt-5 h-1 w-20 rounded-full bg-brand-red"></div>
+            <p class="mt-5 max-w-xl text-base leading-7 text-brand-muted">
+              At Hoobaan Construction Company, we turn vision into reality. With
+              precision, integrity, and excellence, we deliver quality
+              construction solutions that stand the test of time.
+            </p>
+
+            <div
+              class="mt-9 grid gap-6 sm:grid-cols-[1fr_auto_1fr] sm:items-start"
+            >
+              <div class="flex items-start gap-4">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-navy text-white shadow-[0_14px_28px_rgba(6,27,73,0.22)]"
+                >
+                  <svg
+                    class="lucide lucide-building-2 h-7 w-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                    <path d="M6 12H4a2 2 0 0 0-2 2v8h20v-8a2 2 0 0 0-2-2h-2" />
+                    <path d="M10 6h4" />
+                    <path d="M10 10h4" />
+                    <path d="M10 14h4" />
+                    <path d="M10 18h4" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="font-black text-brand-navy">
+                    Quality Construction
+                  </h3>
+                  <p class="mt-2 text-sm leading-6 text-brand-muted">
+                    We use the best materials and modern techniques.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden h-16 w-px bg-slate-300 sm:block"></div>
+              <div class="flex items-start gap-4">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-navy text-white shadow-[0_14px_28px_rgba(6,27,73,0.22)]"
+                >
+                  <svg
+                    class="lucide lucide-handshake h-7 w-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+                    <path
+                      d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"
+                    />
+                    <path d="m21 3 1 11h-2" />
+                    <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+                    <path d="M3 4h8" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="font-black text-brand-navy">Trusted Partner</h3>
+                  <p class="mt-2 text-sm leading-6 text-brand-muted">
+                    We are committed to safety, transparency and reliability.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal relative min-h-[360px] lg:hidden">
+            <img
+              src="img/About Sample images/Team Onsite background.png"
+              alt="Hoobaan construction team reviewing a project on site"
+              class="h-full w-full rounded-2xl object-cover shadow-2xl"
+            />
+            <div
+              class="absolute inset-0 rounded-2xl bg-gradient-to-t from-brand-navy/30 to-transparent"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="who-we-are"
+        class="blueprint relative overflow-hidden bg-brand-navy py-16 lg:py-20"
+      >
+        <div class="dots absolute left-32 top-12 h-32 w-44 opacity-20"></div>
+        <div
+          class="dots absolute bottom-20 right-24 h-32 w-44 opacity-20"
+        ></div>
+        <div
+          class="absolute left-[28%] top-10 hidden h-72 w-64 border border-white/10 opacity-25 [clip-path:polygon(50%_0,100%_28%,100%_100%,0_100%,0_28%)] lg:block"
+        ></div>
+
+        <div
+          class="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1.55fr] lg:px-8"
+        >
+          <div class="reveal">
+            <p
+              class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
+            >
+              Who We Are
+            </p>
+            <div class="mt-3 h-1 w-12 rounded-full bg-brand-red"></div>
+            <h2
+              class="mt-6 text-4xl font-black leading-tight tracking-[-0.03em] sm:text-5xl"
+            >
+              Your Vision,<br />
+              Our <span class="text-brand-red">Commitment.</span>
+            </h2>
+            <p class="mt-6 max-w-md text-base leading-8 text-white/70">
+              We are a team of passionate engineers, architects, and builders
+              dedicated to creating spaces that inspire and last for
+              generations.
+            </p>
+            <a
+              href="services.html"
+              class="mt-8 inline-flex items-center gap-3 rounded-xl bg-brand-red px-6 py-4 text-sm font-black text-white shadow-[0_18px_34px_rgba(6,27,73,0.28)] transition hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#991b1b]"
+            >
+              Learn More About Us
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.2"
+                  d="M5 12h14m-6-6 6 6-6 6"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            <div
+              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
+            >
+              <div
+                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
+              >
+                <svg
+                  class="lucide lucide-clipboard-check h-8 w-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <rect width="8" height="4" x="8" y="2" rx="1" />
+                  <path
+                    d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                  />
+                  <path d="m9 14 2 2 4-4" />
+                </svg>
+              </div>
+              <h3
+                class="stat-number mt-6 text-5xl font-black tracking-tight"
+                data-target="150"
+                data-suffix="+"
+              >
+                0
+              </h3>
+              <div
+                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
+              ></div>
+              <p class="mt-3 text-sm font-bold text-white/80">
+                Projects Completed
+              </p>
+            </div>
+
+            <div
+              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
+            >
+              <div
+                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
+              >
+                <svg
+                  class="lucide lucide-award h-8 w-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"
+                  />
+                  <circle cx="12" cy="8" r="6" />
+                </svg>
+              </div>
+              <h3
+                class="stat-number mt-6 text-5xl font-black tracking-tight"
+                data-target="10"
+                data-suffix="+"
+              >
+                0
+              </h3>
+              <div
+                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
+              ></div>
+              <p class="mt-3 text-sm font-bold text-white/80">
+                Years Experience
+              </p>
+            </div>
+
+            <div
+              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
+            >
+              <div
+                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
+              >
+                <svg
+                  class="lucide lucide-user-check h-8 w-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="m16 11 2 2 4-4" />
+                </svg>
+              </div>
+              <h3
+                class="stat-number mt-6 text-5xl font-black tracking-tight"
+                data-target="250"
+                data-suffix="+"
+              >
+                0
+              </h3>
+              <div
+                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
+              ></div>
+              <p class="mt-3 text-sm font-bold text-white/80">
+                Skilled Professionals
+              </p>
+            </div>
+
+            <div
+              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
+            >
+              <div
+                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
+              >
+                <svg
+                  class="lucide lucide-badge-check h-8 w-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78 4 4 0 0 1 0-6.75Z"
+                  />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+              <h3
+                class="stat-number mt-6 text-5xl font-black tracking-tight"
+                data-target="100"
+                data-suffix="%"
+              >
+                0
+              </h3>
+              <div
+                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
+              ></div>
+              <p class="mt-3 text-sm font-bold text-white/80">
+                Commitment to Quality
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="values" class="relative bg-brand-navy px-6 pb-16 lg:px-8">
+        <div
+          class="reveal mx-auto -mt-6 max-w-7xl rounded-2xl border border-white/15 bg-white/10 p-8 shadow-[0_24px_70px_rgba(0,0,0,0.26)] ring-1 ring-white/10 backdrop-blur-xl lg:p-10"
+        >
+          <div class="grid gap-8 lg:grid-cols-[0.95fr_2.05fr] lg:items-center">
+            <div>
+              <p
+                class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
+              >
+                Our Values
+              </p>
+              <div class="mt-3 h-1 w-12 rounded-full bg-brand-red"></div>
+              <h2
+                class="mt-5 text-3xl font-black leading-tight tracking-[-0.03em] text-white sm:text-4xl"
+              >
+                The Foundation<br />
+                Of <span class="text-brand-red">Everything</span> We Do.
+              </h2>
+            </div>
+
+            <div
+              class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10"
+            >
+              <div class="lg:pr-6">
+                <div
+                  class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_14px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/15"
+                >
+                  <svg
+                    class="lucide lucide-gem h-7 w-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M6 3h12l4 6-10 13L2 9Z" />
+                    <path d="M11 3 8 9l4 13 4-13-3-6" />
+                    <path d="M2 9h20" />
+                  </svg>
+                </div>
+                <h3 class="mt-4 font-black text-white">Integrity</h3>
+                <p class="mt-2 text-sm leading-6 text-white/70">
+                  We do the right thing, always.
+                </p>
+              </div>
+
+              <div class="lg:px-6">
+                <div
+                  class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_14px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/15"
+                >
+                  <svg
+                    class="lucide lucide-trophy h-7 w-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21h10a5 5 0 0 0-2.024-3.018A2 2 0 0 1 14 16.286V14.66"
+                    />
+                    <path d="M18 9h1.5a1.5 1.5 0 0 0 0-3H18" />
+                    <path d="M6 9H4.5a1.5 1.5 0 0 1 0-3H6" />
+                    <path d="M6 2h12v7a6 6 0 0 1-12 0V2Z" />
+                  </svg>
+                </div>
+                <h3 class="mt-4 font-black text-white">Excellence</h3>
+                <p class="mt-2 text-sm leading-6 text-white/70">
+                  We deliver the highest standards in everything we build.
+                </p>
+              </div>
+
+              <div class="lg:px-6">
+                <div
+                  class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_14px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/15"
+                >
+                  <svg
+                    class="lucide lucide-network h-7 w-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <rect width="6" height="6" x="9" y="2" rx="1" />
+                    <rect width="6" height="6" x="16" y="16" rx="1" />
+                    <rect width="6" height="6" x="2" y="16" rx="1" />
+                    <path d="M12 8v4" />
+                    <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+                  </svg>
+                </div>
+                <h3 class="mt-4 font-black text-white">Teamwork</h3>
+                <p class="mt-2 text-sm leading-6 text-white/70">
+                  We collaborate, support, and grow together.
+                </p>
+              </div>
+
+              <div class="lg:pl-6">
+                <div
+                  class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_14px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/15"
+                >
+                  <svg
+                    class="lucide lucide-lightbulb h-7 w-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M15 14c.2-1 .7-1.7 1.5-2.5A4.9 4.9 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"
+                    />
+                    <path d="M9 18h6" />
+                    <path d="M10 22h4" />
+                  </svg>
+                </div>
+                <h3 class="mt-4 font-black text-white">Innovation</h3>
+                <p class="mt-2 text-sm leading-6 text-white/70">
+                  We embrace new ideas to build a better tomorrow.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="team"
+        class="relative overflow-hidden bg-brand-navy px-6 py-24 md:px-10 lg:px-12"
+        style="
+          background-image:
+            linear-gradient(90deg, rgba(6, 27, 73, 0.96), rgba(6, 27, 73, 0.9)),
+            url(&quot;About Sample images/team card background.png&quot;);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        "
+      >
+        <div class="relative mx-auto max-w-7xl">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <div class="reveal">
+              <div class="flex items-center gap-4">
+                <span class="h-6 w-1 rounded-full bg-brand-red"></span>
+                <p
+                  class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
+                >
+                  Meet Our Team
+                </p>
+              </div>
+              <h2
+                class="mt-5 text-5xl font-black leading-[1.04] tracking-[-0.04em] text-white sm:text-6xl"
+              >
+                Leadership &<br />
+                Construction Experts
+              </h2>
+              <div class="mt-6 h-1 w-16 rounded-full bg-brand-red"></div>
+              <p class="mt-5 max-w-2xl text-base leading-8 text-white/70">
+                Our success is built on the expertise, integrity, and dedication
+                of our people. From visionary leaders to skilled professionals
+                on the ground, we work together to build quality, trust, and
+                lasting impact.
+              </p>
+            </div>
+
+            <div class="reveal lg:pt-20">
+              <div
+                class="ml-auto grid max-w-xl gap-0 overflow-hidden rounded-xl border border-white/15 bg-white/10 shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:grid-cols-3"
+              >
+                <div
+                  class="flex items-center gap-4 px-6 py-5 text-white sm:border-r sm:border-white/15"
+                >
+                  <svg
+                    class="lucide lucide-medal h-9 w-9 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.61 2.14a2 2 0 0 1 .13 2.2L16.79 15"
+                    />
+                    <path d="M11 12 5.12 2.2" />
+                    <path d="m13 12 5.88-9.8" />
+                    <path d="M8 7h8" />
+                    <circle cx="12" cy="17" r="5" />
+                    <path d="M12 18v-2h-.5" />
+                  </svg>
+                  <span class="text-sm font-semibold leading-tight"
+                    >Proven<br />Experience</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-4 border-t border-white/15 px-6 py-5 text-white sm:border-r sm:border-t-0"
+                >
+                  <svg
+                    class="lucide lucide-hard-hat h-9 w-9 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2" />
+                    <path d="M12 2v8" />
+                    <path d="m4.93 10.93 1.41 1.41" />
+                    <path d="M2 14h20" />
+                    <path d="m19.07 10.93-1.41 1.41" />
+                    <path d="M6 14v-3a6 6 0 0 1 12 0v3" />
+                  </svg>
+                  <span class="text-sm font-semibold leading-tight"
+                    >Safety<br />First</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-4 border-t border-white/15 px-6 py-5 text-white sm:border-t-0"
+                >
+                  <svg
+                    class="lucide lucide-users h-9 w-9 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                  <span class="text-sm font-semibold leading-tight"
+                    >People<br />Focused</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <article
+              class="team-card reveal group overflow-hidden rounded-2xl border border-brand-blue/25 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.26)]"
+            >
+              <div class="relative overflow-hidden border-t-2 border-[#1A3673]">
+                <img
+                  src="img/team photos/CEO of Hoobaan.jpg"
+                  alt="Eng. Ismael Mohamed Hussein"
+                  class="h-72 w-full object-cover md:h-64 lg:h-56 object-[58%_20%] transition duration-500 group-hover:scale-105"
+                />
+                <span
+                  class="absolute bottom-4 left-5 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+                >
+                  <img
+                    src="img/HomePage_photos/companyLogo.jpg"
+                    alt="Hoobaan logo"
+                    class="h-full w-full object-contain"
+                  />
+                </span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-black leading-snug text-brand-deep">
+                  Eng. Ismael Mohamed Hussein
+                </h3>
+                <p
+                  class="mt-2 text-xs font-black uppercase tracking-[0.04em] text-brand-red"
+                >
+                  Chief Executive Officer
+                </p>
+                <div
+                  class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                ></div>
+                <p class="mt-5 text-sm leading-7 text-gray-600">
+                  Visionary leader driving growth, innovation and long-term
+                  value.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="team-card reveal group overflow-hidden rounded-2xl border border-brand-blue/25 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.26)]"
+            >
+              <div class="relative overflow-hidden border-t-2 border-[#1A3673]">
+                <img
+                  src="img/team photos/Team_member2.jpeg"
+                  alt="Eng. Abdirahman Barud Hasan"
+                  class="h-72 w-full object-cover md:h-64 lg:h-56 object-[50%_24%] transition duration-500 group-hover:scale-105"
+                />
+                <span
+                  class="absolute bottom-4 left-5 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+                >
+                  <img
+                    src="img/HomePage_photos/companyLogo.jpg"
+                    alt="Hoobaan logo"
+                    class="h-full w-full object-contain"
+                  />
+                </span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-black leading-snug text-brand-deep">
+                  Eng. Abdirahman Barud Hasan
+                </h3>
+                <p
+                  class="mt-2 text-xs font-black uppercase tracking-[0.04em] text-brand-red"
+                >
+                  Vice General Manager
+                </p>
+                <div
+                  class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                ></div>
+                <p class="mt-5 text-sm leading-7 text-gray-600">
+                  Oversees operations with a focus on efficiency, quality and
+                  delivery.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="team-card reveal group overflow-hidden rounded-2xl border border-brand-blue/25 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.26)]"
+            >
+              <div class="relative overflow-hidden border-t-2 border-[#1A3673]">
+                <img
+                  src="img/team photos/Farhan Qarni.jpeg"
+                  alt="Eng. Farhan Mohamed Hussein"
+                  class="h-72 w-full object-cover md:h-64 lg:h-56 object-[50%_22%] transition duration-500 group-hover:scale-105"
+                />
+                <span
+                  class="absolute bottom-4 left-5 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+                >
+                  <img
+                    src="img/HomePage_photos/companyLogo.jpg"
+                    alt="Hoobaan logo"
+                    class="h-full w-full object-contain"
+                  />
+                </span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-black leading-snug text-brand-deep">
+                  Eng. Farhan Mohamed Hussein
+                </h3>
+                <p
+                  class="mt-2 text-xs font-black uppercase tracking-[0.04em] text-brand-red"
+                >
+                  Senior Architect
+                </p>
+                <div
+                  class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                ></div>
+                <p class="mt-5 text-sm leading-7 text-gray-600">
+                  Designs smart, sustainable, and functional spaces that
+                  inspire.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="team-card reveal group overflow-hidden rounded-2xl border border-brand-blue/25 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.26)]"
+            >
+              <div class="relative overflow-hidden border-t-2 border-[#1A3673]">
+                <img
+                  src="img/About Sample images/Construction team.jpg"
+                  alt="Hoobaan construction professionals"
+                  class="h-72 w-full object-cover md:h-64 lg:h-56 object-center transition duration-500 group-hover:scale-105"
+                />
+                <span
+                  class="absolute bottom-4 left-5 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+                >
+                  <img
+                    src="img/HomePage_photos/companyLogo.jpg"
+                    alt="Hoobaan logo"
+                    class="h-full w-full object-contain"
+                  />
+                </span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-black leading-snug text-brand-deep">
+                  Our Construction Team
+                </h3>
+                <p
+                  class="mt-2 text-xs font-black uppercase tracking-[0.04em] text-brand-red"
+                >
+                  Dedicated Professionals
+                </p>
+                <div
+                  class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                ></div>
+                <p class="mt-5 text-sm leading-7 text-gray-600">
+                  Skilled, committed, and safety-focused professionals building
+                  your future.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="how-we-work"
+        class="relative overflow-hidden bg-brand-navy px-6 py-24 md:px-10 lg:px-12"
+        style="
+          background-image:
+            linear-gradient(90deg, rgba(6, 27, 73, 0.96), rgba(6, 27, 73, 0.9)),
+            url(&quot;About Sample images/team card background.png&quot;);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        "
+      >
+        <div class="dots absolute left-8 top-14 h-36 w-16 opacity-40"></div>
+        <div
+          class="dots absolute bottom-14 right-16 h-28 w-20 opacity-30"
+        ></div>
+
+        <div class="relative mx-auto max-w-7xl">
+          <div class="reveal max-w-3xl">
+            <div class="flex items-center gap-4">
+              <span class="h-6 w-1 rounded-full bg-brand-red"></span>
+              <p
+                class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
+              >
+                How We Work
+              </p>
+            </div>
+            <h2
+              class="mt-5 text-5xl font-black leading-[1.04] tracking-[-0.04em] text-white sm:text-6xl"
+            >
+              From First Idea to<br />
+              Final Handover
+            </h2>
+            <div class="mt-6 h-1 w-16 rounded-full bg-brand-red"></div>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-white/70">
+              We guide every project with clear planning, strict quality
+              control, and reliable execution from the first conversation to the
+              final handover.
+            </p>
+          </div>
+
+          <div class="relative mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-5">
+            <div
+              class="absolute left-[7%] right-[7%] top-[54%] hidden h-px -translate-y-1/2 bg-white/45 shadow-[0_0_18px_rgba(255,255,255,0.45)] lg:block"
+            ></div>
+
+            <article
+              class="process-card reveal group relative z-10 min-h-[270px] rounded-2xl p-6"
+            >
+              <div
+                class="relative z-10 text-[42px] font-black leading-none tracking-tight text-brand-red"
+              >
+                01
+              </div>
+              <svg
+                class="lucide lucide-messages-square relative z-10 mt-6 h-12 w-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 9a2 2 0 0 1-2 2H6l-4 4V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"
+                />
+                <path d="M18 9h2a2 2 0 0 1 2 2v10l-4-4h-6a2 2 0 0 1-2-2v-1" />
+                <path d="M6 7h4" />
+                <path d="M14 13h4" />
+              </svg>
+              <h3 class="relative z-10 mt-7 text-lg font-black text-white">
+                Consultation
+              </h3>
+              <p class="relative z-10 mt-3 text-sm leading-6 text-white/70">
+                We listen, understand, and align with your vision.
+              </p>
+            </article>
+
+            <article
+              class="process-card reveal group relative z-10 min-h-[270px] rounded-2xl p-6"
+            >
+              <div
+                class="relative z-10 text-[42px] font-black leading-none tracking-tight text-brand-red"
+              >
+                02
+              </div>
+              <svg
+                class="lucide lucide-drafting-compass relative z-10 mt-6 h-12 w-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+                viewBox="0 0 24 24"
+              >
+                <path d="m12 3-2 7 7 2 2-7-7-2Z" />
+                <path d="M12 3v18" />
+                <path d="M5 21h14" />
+                <path d="m19 5-7 16" />
+                <path d="m5 21 7-18" />
+              </svg>
+              <h3 class="relative z-10 mt-7 text-lg font-black text-white">
+                Planning & Design
+              </h3>
+              <p class="relative z-10 mt-3 text-sm leading-6 text-white/70">
+                We create smart designs built around your needs.
+              </p>
+            </article>
+
+            <article
+              class="process-card reveal group relative z-10 min-h-[270px] rounded-2xl p-6"
+            >
+              <div
+                class="relative z-10 text-[42px] font-black leading-none tracking-tight text-brand-red"
+              >
+                03
+              </div>
+              <svg
+                class="lucide lucide-calculator relative z-10 mt-6 h-12 w-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+                viewBox="0 0 24 24"
+              >
+                <rect width="16" height="20" x="4" y="2" rx="2" />
+                <line x1="8" x2="16" y1="6" y2="6" />
+                <line x1="16" x2="16" y1="14" y2="18" />
+                <path d="M8 10h.01" />
+                <path d="M12 10h.01" />
+                <path d="M16 10h.01" />
+                <path d="M8 14h.01" />
+                <path d="M12 14h.01" />
+                <path d="M8 18h.01" />
+                <path d="M12 18h.01" />
+              </svg>
+              <h3 class="relative z-10 mt-7 text-lg font-black text-white">
+                Cost Estimation
+              </h3>
+              <p class="relative z-10 mt-3 text-sm leading-6 text-white/70">
+                We provide accurate, transparent estimates with no surprises.
+              </p>
+            </article>
+
+            <article
+              class="process-card reveal group relative z-10 min-h-[270px] rounded-2xl p-6"
+            >
+              <div
+                class="relative z-10 text-[42px] font-black leading-none tracking-tight text-brand-red"
+              >
+                04
+              </div>
+              <svg
+                class="lucide lucide-construction relative z-10 mt-6 h-12 w-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="6" width="20" height="8" rx="1" />
+                <path d="M17 14v7" />
+                <path d="M7 14v7" />
+                <path d="M17 3v3" />
+                <path d="M7 3v3" />
+                <path d="M10 14 2.3 6.3" />
+                <path d="m14 6 7.7 7.7" />
+                <path d="m8 6 8 8" />
+              </svg>
+              <h3 class="relative z-10 mt-7 text-lg font-black text-white">
+                Construction Execution
+              </h3>
+              <p class="relative z-10 mt-3 text-sm leading-6 text-white/70">
+                We build with precision, safety, and strict quality control.
+              </p>
+            </article>
+
+            <article
+              class="process-card reveal group relative z-10 min-h-[270px] rounded-2xl p-6"
+            >
+              <div
+                class="relative z-10 text-[42px] font-black leading-none tracking-tight text-brand-red"
+              >
+                05
+              </div>
+              <svg
+                class="lucide lucide-house-check relative z-10 mt-6 h-12 w-12 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+                viewBox="0 0 24 24"
+              >
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                <path d="M3 10.5 12 3l9 7.5" />
+                <path d="M5 10v9a2 2 0 0 0 2 2h6" />
+                <path d="m15 19 2 2 4-4" />
+              </svg>
+              <h3 class="relative z-10 mt-7 text-lg font-black text-white">
+                Final Handover
+              </h3>
+              <p class="relative z-10 mt-3 text-sm leading-6 text-white/70">
+                We deliver on time with complete quality and documentation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="about-cta"
+        class="blueprint relative overflow-hidden bg-brand-navy px-6 py-24 md:px-10 lg:px-12"
+        style="
+          background-image:
+            linear-gradient(
+              135deg,
+              rgba(6, 27, 73, 0.98),
+              rgba(6, 27, 73, 0.92)
+            ),
+            url(&quot;About Sample images/team card background.png&quot;);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        "
+      >
+        <div class="dots absolute left-10 top-12 h-28 w-16 opacity-30"></div>
+        <div
+          class="dots absolute bottom-12 right-12 h-28 w-20 opacity-25"
+        ></div>
+
+        <div class="relative mx-auto max-w-6xl">
+          <div
+            class="reveal overflow-hidden rounded-[2rem] border border-white/15 bg-white/10 px-6 py-14 text-center shadow-[0_28px_80px_rgba(26,54,115,0.28)] backdrop-blur-2xl sm:px-10 lg:px-16"
+          >
+            <div class="mx-auto flex w-fit items-center gap-3">
+              <span class="h-6 w-1 rounded-full bg-brand-red"></span>
+              <p
+                class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
+              >
+                Start Your Project
+              </p>
+            </div>
+
+            <h2
+              class="mx-auto mt-5 max-w-4xl text-4xl font-black leading-tight tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl"
+            >
+              Ready to Build With Hoobaan?
+            </h2>
+
+            <p
+              class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/70 sm:text-lg"
+            >
+              Let's discuss your next construction project and turn your vision
+              into a strong, lasting structure.
+            </p>
+
+            <div
+              class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            >
+              <a
+                href="#contact"
+                class="inline-flex min-h-12 items-center justify-center rounded-xl bg-brand-red px-7 text-sm font-black text-white shadow-[0_16px_32px_rgba(6,27,73,0.28)] transition duration-300 hover:-translate-y-1 hover:bg-red-700 hover:shadow-[0_22px_40px_rgba(6,27,73,0.34)]"
+              >
+                Contact Us
+              </a>
+              <a
+                href="Projects.html"
+                class="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-7 text-sm font-black text-white shadow-[0_14px_30px_rgba(0,0,0,0.16)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/35 hover:bg-white/15 hover:shadow-[0_22px_44px_rgba(26,54,115,0.28)]"
+              >
+                View Projects
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ===== END ABOUT SECTION REPLACEMENT ===== -->
+
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("menu-overlay");
+      const hamburger = document.getElementById("hamburger-icon");
+      const closeIcon = document.getElementById("close-icon");
+      const links = document.querySelectorAll("#mobile-menu nav a");
+
+      function toggleMenu() {
+        menu.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+        if (hamburger) hamburger.classList.toggle("hidden");
+        if (closeIcon) closeIcon.classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden");
+      }
+
+      if (btn) btn.addEventListener("click", toggleMenu);
+      if (overlay) overlay.addEventListener("click", toggleMenu);
+
+      links.forEach((link) => {
+        link.addEventListener("click", toggleMenu);
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      menu.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+
+      menu.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        },
+        { passive: true },
+      );
+
+      function handleSwipe() {
+        const swipeDistance = touchStartX - touchEndX;
+        const minSwipeThreshold = 50;
+
+        if (
+          swipeDistance > minSwipeThreshold &&
+          !menu.classList.contains("-translate-x-full")
+        ) {
+          toggleMenu();
+        }
+      }
+
+      const revealItems = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+
+        revealItems.forEach((item, index) => {
+          item.style.transitionDelay = `${Math.min(index * 45, 240)}ms`;
+          observer.observe(item);
+        });
+      } else {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      }
+
+      const statNumbers = document.querySelectorAll(".stat-number");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      function setStatValue(stat, value) {
+        stat.textContent = `${value}${stat.dataset.suffix || ""}`;
+      }
+
+      function animateStat(stat) {
+        if (stat.dataset.counted === "true") return;
+
+        stat.dataset.counted = "true";
+
+        const target = Number(stat.dataset.target || 0);
+        const duration = 1400;
+        const startTime = performance.now();
+
+        if (prefersReducedMotion) {
+          setStatValue(stat, target);
+          return;
+        }
+
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(target * eased);
+
+          setStatValue(stat, current);
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            setStatValue(stat, target);
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      if ("IntersectionObserver" in window) {
+        const statObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateStat(entry.target);
+                statObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.45 },
+        );
+
+        statNumbers.forEach((stat) => statObserver.observe(stat));
+      } else {
+        statNumbers.forEach(animateStat);
+      }
+    </script>
+  </body>
+</html>

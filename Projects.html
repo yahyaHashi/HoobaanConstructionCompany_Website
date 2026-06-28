@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="so" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mashaariicdayada - Hoobaan Construction</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="img/HomePage_photos/companyLogo-favicon.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="img/HomePage_photos/companyLogo-favicon.png"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                navy: "#061E46",
+                blue: "#0A2C73",
+                red: "#B91C1C",
+                dark: "#041126",
+                soft: "#D6DEEA",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .blueprint {
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle at 18% 0%,
+            rgba(26, 54, 115, 0.52),
+            transparent 34%
+          ),
+          radial-gradient(
+            circle at 86% 20%,
+            rgba(185, 28, 28, 0.12),
+            transparent 28%
+          ),
+          #061e46;
+        background-size:
+          72px 72px,
+          72px 72px,
+          auto,
+          auto,
+          auto;
+      }
+
+      .dot-grid {
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.42) 1.15px,
+          transparent 1.15px
+        );
+        background-size: 18px 18px;
+      }
+
+      .footer-cta-bounce {
+        animation: footerCtaBounce 2.4s ease-in-out infinite;
+      }
+
+      @keyframes footerCtaBounce {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        12% {
+          transform: translateY(-8px) scale(1.035);
+        }
+        22% {
+          transform: translateY(0) scale(1);
+        }
+        31% {
+          transform: translateY(-4px) scale(1.018);
+        }
+        40% {
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .gallery-card {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.055);
+        box-shadow: 0 20px 52px rgba(0, 0, 0, 0.22);
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .gallery-card img {
+        filter: saturate(1.05) contrast(1.03);
+        transition:
+          filter 0.7s ease,
+          transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .gallery-card:hover {
+        transform: translateY(-7px);
+        border-color: rgba(255, 255, 255, 0.26);
+        box-shadow:
+          0 30px 72px rgba(0, 0, 0, 0.34),
+          0 18px 40px rgba(185, 28, 28, 0.12);
+      }
+
+      .gallery-card:hover img {
+        filter: saturate(1.16) contrast(1.07);
+        transform: scale(1.075);
+      }
+
+      .project-flip-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .project-flip-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .project-flip-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      .project-flip-card {
+        min-height: 22rem;
+        cursor: pointer;
+        perspective: 1400px;
+      }
+
+      .project-flip-inner {
+        position: relative;
+        height: 100%;
+        min-height: 22rem;
+        transform-style: preserve-3d;
+        transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .project-flip-card:hover .project-flip-inner,
+      .project-flip-card.is-flipped .project-flip-inner {
+        transform: rotateY(180deg);
+      }
+
+      .project-flip-face {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        backface-visibility: hidden;
+        box-shadow: 0 22px 58px rgba(0, 0, 0, 0.28);
+      }
+
+      .project-flip-front {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .project-flip-front::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(4, 17, 38, 0.04),
+          rgba(4, 17, 38, 0.62)
+        );
+      }
+
+      .project-flip-front img,
+      .project-marquee-card img {
+        filter: saturate(1.05) contrast(1.03);
+        transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .project-flip-card:hover img,
+      .project-marquee-card:hover img {
+        transform: scale(1.07);
+      }
+
+      .project-flip-badge {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 2;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(4, 17, 38, 0.68);
+        padding: 0.5rem 0.75rem;
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: white;
+        backdrop-filter: blur(14px);
+      }
+
+      .project-flip-back {
+        display: flex;
+        transform: rotateY(180deg);
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.5rem;
+        background:
+          linear-gradient(135deg, rgba(185, 28, 28, 0.2), transparent 34%),
+          linear-gradient(180deg, #061e46, #041126);
+        padding: 1.45rem;
+      }
+
+      .project-marquee-window {
+        overflow: hidden;
+        border-radius: 1.25rem;
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          black 8%,
+          black 92%,
+          transparent
+        );
+      }
+
+      .project-marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 1rem;
+        animation: projectMarquee var(--marquee-duration, 74s) linear infinite;
+      }
+
+      .project-marquee-window:hover .project-marquee-track {
+        animation-play-state: paused;
+      }
+
+      .project-marquee-track.is-reverse {
+        animation-name: projectMarqueeReverse;
+      }
+
+      .project-marquee-card {
+        position: relative;
+        isolation: isolate;
+        height: 17rem;
+        width: min(78vw, 24rem);
+        flex: 0 0 auto;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.055);
+        box-shadow: 0 20px 52px rgba(0, 0, 0, 0.22);
+      }
+
+      @media (min-width: 1024px) {
+        .project-marquee-card {
+          height: 18rem;
+          width: 29rem;
+        }
+      }
+
+      @keyframes projectMarquee {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(-50%, 0, 0);
+        }
+      }
+
+      @keyframes projectMarqueeReverse {
+        from {
+          transform: translate3d(-50%, 0, 0);
+        }
+        to {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .image-strip {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(185, 28, 28, 0.85) rgba(255, 255, 255, 0.08);
+      }
+
+      .image-strip::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .image-strip::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+      }
+
+      .image-strip::-webkit-scrollbar-thumb {
+        background: rgba(185, 28, 28, 0.85);
+        border-radius: 999px;
+      }
+
+      .lightbox-media img,
+      .lightbox-media video {
+        max-height: min(78vh, 850px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .gallery-card img,
+        .gallery-card,
+        .project-flip-inner,
+        .project-flip-front img,
+        .project-marquee-track,
+        .project-marquee-card img,
+        .footer-cta-bounce {
+          transition: none;
+          animation: none;
+        }
+
+        .gallery-card:hover,
+        .gallery-card:hover img,
+        .project-flip-card:hover .project-flip-inner,
+        .project-flip-card.is-flipped .project-flip-inner,
+        .project-flip-card:hover img,
+        .project-marquee-card:hover img {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-brand-navy font-sans text-white antialiased">
+    <nav class="sticky left-0 top-4 z-[100] w-full px-4 sm:px-6">
+      <div
+        class="relative z-[130] mx-auto flex h-20 max-w-7xl items-center justify-between rounded-2xl border border-white/20 bg-brand-navy/90 px-4 shadow-[0_18px_50px_rgba(0,0,0,0.26)] ring-1 ring-white/10 backdrop-blur-xl sm:px-6 lg:px-7"
+      >
+        <a href="Home.html" class="relative z-[120] flex items-center gap-3">
+          <span
+            class="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"
+          >
+            <img
+              src="img/HomePage_photos/companyLogo.jpg"
+              alt="Hoobaan Construction Company Logo"
+              class="h-full w-full object-contain"
+            />
+          </span>
+          <span class="leading-none">
+            <span
+              class="block text-xl font-black tracking-tight text-white sm:text-2xl"
+              >HOOBAAN</span
+            >
+            <span
+              class="mt-1 block text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/65 sm:text-[10px]"
+            >
+              Construction Company
+            </span>
+          </span>
+        </a>
+
+        <div
+          class="hidden items-center gap-10 text-base font-extrabold text-white lg:flex"
+        >
+          <a
+            href="Home.html"
+            class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="relative text-white/90 transition-colors duration-300 hover:text-brand-red"
+            >Services</a
+          >
+          <a
+            href="Projects.html"
+            class="relative text-brand-red transition-colors duration-300"
+          >
+            Projects
+            <span
+              class="absolute -bottom-2 left-1/2 h-0.5 w-7 -translate-x-1/2 rounded-full bg-brand-red"
+            ></span>
+          </a>
+        </div>
+
+        <a
+          href="AdnaDhiso.html"
+          class="hidden items-center gap-2 rounded-xl bg-brand-red px-5 py-3 text-sm font-extrabold text-white shadow-[0_10px_22px_rgba(6,27,73,0.24)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#991b1b] lg:inline-flex"
+        >
+          <img
+            src="img/Projects_photos/implementation.png"
+            alt=""
+            aria-hidden="true"
+            class="h-5 w-5 object-contain brightness-0 invert"
+          />
+          Adna Dhiso
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          class="relative z-[120] rounded-xl border border-white/20 bg-white/10 p-2.5 text-white shadow-sm transition hover:bg-white/15 lg:hidden"
+          aria-label="Toggle mobile menu"
+        >
+          <svg
+            id="hamburger-icon"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            id="close-icon"
+            class="hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="fixed left-0 top-0 z-[110] flex h-[100dvh] w-[82%] max-w-sm -translate-x-full flex-col border-r border-white/15 bg-brand-navy/95 shadow-2xl backdrop-blur-2xl transition-transform duration-300 ease-in-out"
+      >
+        <div class="flex h-28 items-center px-7">
+          <span
+            class="text-xs font-black uppercase tracking-[0.22em] text-white/50"
+            >Menu</span
+          >
+        </div>
+        <div class="flex flex-1 flex-col px-7 pb-10">
+          <nav class="flex flex-col gap-2 text-lg font-extrabold text-white">
+            <a
+              href="Home.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Home <span>&rarr;</span>
+            </a>
+            <a
+              href="about.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              About <span>&rarr;</span>
+            </a>
+            <a
+              href="services.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Services <span>&rarr;</span>
+            </a>
+            <a
+              href="Projects.html"
+              class="flex items-center justify-between rounded-xl bg-brand-red/10 px-4 py-4 text-brand-red"
+            >
+              Projects <span>&rarr;</span>
+            </a>
+          </nav>
+          <div class="mt-auto pt-8">
+            <a
+              href="AdnaDhiso.html"
+              onclick="toggleMenu()"
+              class="flex items-center justify-center gap-2 rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
+            >
+              <img
+                src="img/Projects_photos/implementation.png"
+                alt=""
+                aria-hidden="true"
+                class="h-5 w-5 object-contain brightness-0 invert"
+              />
+              Adna Dhiso
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        id="menu-overlay"
+        class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
+        onclick="toggleMenu()"
+      ></div>
+    </nav>
+
+    <main>
+      <section
+        class="projects-hero relative min-h-[102svh] overflow-hidden bg-brand-dark pt-10 sm:pt-12"
+      >
+        <img
+          src="img/Projects_photos/Completed Projects/residential buildings.jpg"
+          alt="Hoobaan completed project exterior"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/82 to-brand-navy/24"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-brand-navy/42"
+        ></div>
+        <div
+          class="pointer-events-none absolute left-0 top-0 h-56 w-[24rem] bg-gradient-to-br from-brand-navy via-brand-navy/95 to-transparent"
+        ></div>
+        <div
+          class="dot-grid pointer-events-none absolute right-8 top-36 hidden h-44 w-44 opacity-24 lg:block"
+        ></div>
+
+        <div
+          class="relative z-10 mx-auto flex min-h-[calc(102svh-5rem)] max-w-7xl flex-col justify-between px-6 pb-24 pt-6 sm:pb-28 sm:pt-8 lg:px-8 lg:pb-32 lg:pt-10"
+        >
+          <div class="max-w-4xl">
+            <div class="flex items-center gap-4">
+              <span class="h-6 w-1 rounded-full bg-brand-red"></span>
+              <p
+                class="text-sm font-black uppercase tracking-[0.2em] text-brand-red sm:text-[0.95rem]"
+              >
+                Mashaariicda Hoobaan
+              </p>
+            </div>
+            <h1
+              class="mt-6 max-w-5xl text-5xl font-black leading-[1.03] tracking-[-0.035em] text-white sm:text-6xl lg:text-[4.6rem]"
+            >
+              Built Proof, Not Promises.
+            </h1>
+            <div class="mt-5 h-1 w-14 rounded-full bg-brand-red"></div>
+            <p
+              class="mt-6 max-w-3xl text-xl font-semibold leading-9 text-white/80 sm:text-2xl sm:leading-[2.7rem]"
+            >
+              Daawo mashaariic dhab ah, naqshado 3D ah, iyo interior designs ay
+              Hoobaan Construction Company ku muujinayso tayada shaqadeeda.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#projects-gallery"
+              class="inline-flex items-center justify-center rounded-full bg-brand-red px-7 py-4 text-sm font-black uppercase tracking-[0.12em] text-white shadow-[0_18px_42px_rgba(185,28,28,0.28)] transition hover:bg-[#991b1b]"
+            >
+              View Projects
+            </a>
+            <a
+              href="#project-video"
+              class="inline-flex items-center justify-center rounded-full border border-white/24 bg-white/10 px-7 py-4 text-sm font-black uppercase tracking-[0.12em] text-white backdrop-blur transition hover:bg-white/16"
+            >
+              Watch Video
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="project-video"
+        class="video-showcase blueprint relative overflow-hidden py-24 lg:py-28"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(185,28,28,0.13),transparent_30%),linear-gradient(180deg,rgba(4,17,38,0.22),rgba(4,17,38,0.72))]"
+        ></div>
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <div class="flex items-center gap-4">
+              <span class="h-5 w-px bg-brand-red"></span>
+              <p
+                class="text-sm font-black uppercase tracking-[0.22em] text-brand-red"
+              >
+                Video Showcase
+              </p>
+            </div>
+            <h2
+              class="mt-6 text-4xl font-black leading-[1.04] tracking-[-0.035em] text-white sm:text-5xl"
+            >
+              Daawo shaqada Hoobaan
+            </h2>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/64">
+              Waa dhisme qurxoon oo ay dhistay shirkadda faca weyn ee
+              Hoobaan.
+            </p>
+          </div>
+
+          <div
+            class="mt-12 overflow-hidden rounded-[1.65rem] border border-white/14 bg-white/[0.055] p-3 shadow-[0_32px_95px_rgba(0,0,0,0.34)] backdrop-blur-xl"
+          >
+            <video
+              class="aspect-video w-full rounded-[1.2rem] bg-brand-dark object-cover"
+              src="img/Videos/Hobaan G+1.mp4"
+              poster="img/Videos/Hobaan G+1-poster.jpg"
+              controls
+              playsinline
+              preload="metadata"
+            ></video>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="projects-gallery"
+        class="gallery-shell blueprint relative overflow-hidden py-24 lg:py-28"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_14%,rgba(185,28,28,0.13),transparent_28%),linear-gradient(180deg,rgba(4,17,38,0.2),rgba(4,17,38,0.82))]"
+        ></div>
+        <div class="dot-grid pointer-events-none absolute inset-0 opacity-[0.08]"></div>
+
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <div class="flex items-center gap-4">
+              <span class="h-5 w-px bg-brand-red"></span>
+              <p
+                class="text-sm font-black uppercase tracking-[0.22em] text-brand-red"
+              >
+                Project Showcase
+              </p>
+            </div>
+            <h2
+              class="mt-6 text-4xl font-black leading-[1.04] tracking-[-0.035em] text-white sm:text-5xl"
+            >
+              Our Projects
+            </h2>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/64">
+              Hoobaan Construction. Crafted spaces. Built with vision. Finished
+              with pride.
+            </p>
+          </div>
+
+          <div class="mt-14 space-y-16">
+            <section
+              class="project-row"
+              aria-labelledby="completed-buildings-heading"
+            >
+              <div
+                class="mb-5 flex items-end justify-between gap-5 border-b border-white/10 pb-5"
+              >
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-[0.22em] text-brand-red"
+                  >
+                    01
+                  </p>
+                  <h3
+                    id="completed-buildings-heading"
+                    class="mt-2 text-2xl font-black text-white sm:text-3xl"
+                  >
+                    Completed Buildings
+                  </h3>
+                </div>
+              </div>
+              <div
+                class="project-flip-grid"
+                data-flip-grid="completed"
+                aria-label="Completed buildings flip card gallery"
+              ></div>
+            </section>
+
+            <section class="project-row" aria-labelledby="visuals-heading">
+              <div
+                class="mb-5 flex items-end justify-between gap-5 border-b border-white/10 pb-5"
+              >
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-[0.22em] text-brand-red"
+                  >
+                    02
+                  </p>
+                  <h3
+                    id="visuals-heading"
+                    class="mt-2 text-2xl font-black text-white sm:text-3xl"
+                  >
+                    3D Visuals
+                  </h3>
+                </div>
+              </div>
+              <div
+                class="project-marquee-window"
+                aria-label="3D visuals infinite gallery"
+              >
+                <div
+                  class="project-marquee-track"
+                  data-marquee-strip="visuals"
+                  style="--marquee-duration: 82s"
+                ></div>
+              </div>
+            </section>
+
+            <section class="project-row" aria-labelledby="interiors-heading">
+              <div
+                class="mb-5 flex items-end justify-between gap-5 border-b border-white/10 pb-5"
+              >
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-[0.22em] text-brand-red"
+                  >
+                    03
+                  </p>
+                  <h3
+                    id="interiors-heading"
+                    class="mt-2 text-2xl font-black text-white sm:text-3xl"
+                  >
+                    Interiors
+                  </h3>
+                </div>
+              </div>
+              <div
+                class="project-marquee-window"
+                aria-label="Interiors infinite gallery"
+              >
+                <div
+                  class="project-marquee-track is-reverse"
+                  data-marquee-strip="interiors"
+                  style="--marquee-duration: 96s"
+                ></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      id="contact"
+      class="relative overflow-hidden bg-[#041126] pb-10 pt-20 text-white"
+    >
+      <div
+        class="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-transparent via-brand-red to-transparent opacity-45"
+      ></div>
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(10,44,115,0.55),transparent_30%),radial-gradient(circle_at_88%_20%,rgba(185,28,28,0.12),transparent_24%),linear-gradient(180deg,rgba(4,17,38,0.2),rgba(4,17,38,1))]"
+      ></div>
+      <div class="dot-grid pointer-events-none absolute inset-0 opacity-[0.045]"></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div
+          class="mb-16 border-b border-white/10 pb-12 lg:flex lg:items-end lg:justify-between lg:gap-12"
+        >
+          <div class="max-w-3xl">
+            <p
+              class="text-xs font-black uppercase tracking-[0.24em] text-brand-red"
+            >
+              Build With Hoobaan
+            </p>
+            <h2
+              class="mt-5 text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl"
+            >
+              U dhiibo dhismaha gurigaaga mustaqbalka shirkadda Hoobaan.
+            </h2>
+          </div>
+          <a
+            href="AdnaDhiso.html"
+            class="footer-cta-bounce mt-8 inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand-red px-7 py-4 text-sm font-black uppercase tracking-[0.12em] text-white shadow-[0_18px_42px_rgba(185,28,28,0.28)] transition hover:bg-[#991b1b] lg:mt-0"
+          >
+            <img
+              src="img/Projects_photos/implementation.png"
+              alt=""
+              aria-hidden="true"
+              class="h-5 w-5 object-contain brightness-0 invert"
+            />
+            Adna Dhiso
+          </a>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-[1.2fr_0.75fr_1.05fr] lg:gap-0">
+          <div class="lg:pr-10">
+            <div class="flex items-center gap-4">
+              <div class="rounded-xl bg-white p-2 shadow-2xl">
+                <img
+                  src="img/HomePage_photos/companyLogo.jpg"
+                  alt="Hoobaan Logo"
+                  class="h-14 w-auto"
+                />
+              </div>
+              <div>
+                <h3 class="text-3xl font-black uppercase leading-none">
+                  Hoobaan
+                </h3>
+                <p
+                  class="mt-1 text-[10px] font-bold uppercase tracking-[0.28em] text-brand-red"
+                >
+                  Construction Company
+                </p>
+              </div>
+            </div>
+
+            <p class="mt-7 max-w-xl text-sm leading-7 text-white/58 md:text-base">
+              Hoobaan waxay dhistaa guryo, ganacsiyo, iyo mashaariic muuqaal
+              qurxoon leh. Waxaan isku darnaa qorshe fiican, shaqo nadiif ah,
+              iyo dhammeystir lagu kalsoonaan karo.
+            </p>
+          </div>
+
+          <div
+            class="border-t border-white/10 pt-10 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"
+          >
+            <h3
+              class="mb-3 text-sm font-black uppercase tracking-[0.2em] text-white"
+            >
+              Bogagga
+            </h3>
+            <div class="mb-6 h-px w-12 bg-brand-red"></div>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="Home.html"
+                  class="group inline-flex items-center gap-3 text-sm font-semibold text-white/58 transition hover:text-brand-red"
+                  ><span class="text-brand-red transition group-hover:translate-x-1"
+                    >→</span
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="group inline-flex items-center gap-3 text-sm font-semibold text-white/58 transition hover:text-brand-red"
+                  ><span class="text-brand-red transition group-hover:translate-x-1"
+                    >→</span
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="services.html"
+                  class="group inline-flex items-center gap-3 text-sm font-semibold text-white/58 transition hover:text-brand-red"
+                  ><span class="text-brand-red transition group-hover:translate-x-1"
+                    >→</span
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Projects.html"
+                  class="inline-flex items-center gap-3 border-l-2 border-brand-red pl-3 text-sm font-black text-white"
+                  >Projects</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="border-t border-white/10 pt-10 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"
+          >
+            <h3
+              class="mb-3 text-sm font-black uppercase tracking-[0.2em] text-white"
+            >
+              Nala Soo Xidhiidh
+            </h3>
+            <div class="mb-6 h-px w-12 bg-brand-red"></div>
+            <div class="space-y-5">
+              <div class="border border-white/10 bg-white/[0.045] p-5">
+                <div class="flex items-start gap-3">
+                  <span
+                    class="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red/12 text-brand-red"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 21s7-4.44 7-11a7 7 0 10-14 0c0 6.56 7 11 7 11z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 10.5a2 2 0 100-4 2 2 0 000 4z"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <p
+                      class="text-[10px] font-black uppercase tracking-widest text-brand-red"
+                    >
+                      Location
+                    </p>
+                    <p class="mt-3 text-sm leading-7 text-white/68">
+                      Hargeisa, Somaliland<br />Axmed-dhagax, Siinay<br />Kasoo
+                      horjeedka Somtel Siinay
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <a
+                  href="tel:0638833011"
+                  class="flex items-center gap-3 border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-white/72 transition hover:border-brand-red hover:text-white"
+                >
+                  <span
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red/12 text-brand-red"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.1"
+                        d="M3 5.5A2.5 2.5 0 015.5 3h2.1a1.5 1.5 0 011.43 1.05l.86 2.58a1.5 1.5 0 01-.36 1.53l-1 1a13.5 13.5 0 005.8 5.8l1-1a1.5 1.5 0 011.53-.36l2.58.86A1.5 1.5 0 0121 16.4v2.1a2.5 2.5 0 01-2.5 2.5h-.6C9.67 21 3 14.33 3 6.1v-.6z"
+                      />
+                    </svg>
+                  </span>
+                  <span>063-8833011</span>
+                </a>
+                <a
+                  href="tel:0634403775"
+                  class="flex items-center gap-3 border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-white/72 transition hover:border-brand-red hover:text-white"
+                >
+                  <span
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red/12 text-brand-red"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.1"
+                        d="M3 5.5A2.5 2.5 0 015.5 3h2.1a1.5 1.5 0 011.43 1.05l.86 2.58a1.5 1.5 0 01-.36 1.53l-1 1a13.5 13.5 0 005.8 5.8l1-1a1.5 1.5 0 011.53-.36l2.58.86A1.5 1.5 0 0121 16.4v2.1a2.5 2.5 0 01-2.5 2.5h-.6C9.67 21 3 14.33 3 6.1v-.6z"
+                      />
+                    </svg>
+                  </span>
+                  <span>063-4403775</span>
+                </a>
+              </div>
+
+              <a
+                href="mailto:hoobaan.cc@gmail.com"
+                class="flex items-center gap-3 border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-white/72 transition hover:border-brand-red hover:text-white"
+              >
+                <span
+                  class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-red/12 text-brand-red"
+                >
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16v12H4z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 7l8 6 8-6"
+                    />
+                  </svg>
+                </span>
+                <span>hoobaan.cc@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-14 flex flex-col items-center justify-between gap-6 border-t border-white/8 pt-7 md:flex-row"
+        >
+          <p
+            class="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/35 md:text-left"
+          >
+            © 2026 <span class="text-white">Hoobaan Construction Company</span>
+          </p>
+
+          <div class="flex items-center gap-3">
+            <a
+              href="https://www.facebook.com/HoobaanConstruction"
+              class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all hover:border-[#1877F2] hover:bg-[#1877F2]"
+              aria-label="Facebook"
+            >
+              <svg class="h-5 w-5 fill-white" viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://vm.tiktok.com/ZMHE8BmwTJNwh-nYgQ6/"
+              class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all hover:border-black hover:bg-black"
+              aria-label="TikTok"
+            >
+              <svg class="h-5 w-5 fill-white" viewBox="0 0 24 24">
+                <path
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.27 1.76-.23.84-.16 1.74.28 2.48.48.81 1.37 1.39 2.28 1.47.99.07 2.03-.23 2.78-.89.47-.42.81-.99.92-1.61.12-1.39.03-2.79.05-4.19V0z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[200] hidden items-center justify-center bg-[#020916]/92 p-4 backdrop-blur-md"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        class="absolute right-5 top-5 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/16"
+        onclick="closeLightbox()"
+        aria-label="Close gallery"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="lightbox-media w-full max-w-6xl">
+        <img
+          id="lightbox-img"
+          src=""
+          alt=""
+          class="mx-auto hidden max-w-full object-contain shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+        />
+        <video
+          id="lightbox-video"
+          src=""
+          class="mx-auto hidden max-w-full shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+          controls
+          playsinline
+        ></video>
+        <p
+          id="lightbox-caption"
+          class="mx-auto mt-5 max-w-3xl text-center text-sm font-black uppercase tracking-[0.18em] text-white/72"
+        ></p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("menu-overlay");
+      const hamburger = document.getElementById("hamburger-icon");
+      const closeIcon = document.getElementById("close-icon");
+
+      function toggleMenu() {
+        menu.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+        if (hamburger) hamburger.classList.toggle("hidden");
+        if (closeIcon) closeIcon.classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden");
+      }
+
+      if (btn) btn.addEventListener("click", toggleMenu);
+      if (overlay) overlay.addEventListener("click", toggleMenu);
+
+      document.querySelectorAll("#mobile-menu nav a").forEach((link) => {
+        link.addEventListener("click", toggleMenu);
+      });
+
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxVideo = document.getElementById("lightbox-video");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+
+      const projectImageGroups = {
+        completed: {
+          label: "Completed building project",
+          lightboxTitle: "Completed Building",
+          images: [
+            "img/Projects_photos/Completed Projects/Hobaan G+1-poster.jpg",
+            "img/Projects_photos/Completed Projects/suuqa waaheen sawir korka ah .jpg",
+            "img/Projects_photos/Completed Projects/wajahada mallka.jpg",
+            "img/Projects_photos/Completed Projects/Gudaha mallka.jpg",
+            "img/Projects_photos/Completed Projects/Meheradaha ku yaala mallka guduhiisa.jpg",
+            "img/Projects_photos/Completed Projects/Meheradaha ku yaala mallka guduhiisa2.jpg",
+            "img/Projects_photos/Completed Projects/Modern Classic Residential Villa.jpg",
+            "img/Projects_photos/Completed Projects/guri.jpg",
+            "img/Projects_photos/Completed Projects/483501285_3031100760379946_1485034208899337599_n.jpg",
+            "img/Projects_photos/Completed Projects/488660098_1070318898446905_9185823781034861081_n.jpg",
+            "img/Projects_photos/Completed Projects/522565078_1157825173029610_998119851317444341_n.jpg",
+            "img/Projects_photos/Completed Projects/556093736_1213521467459980_2180415436213344295_n.jpg",
+            "img/Projects_photos/Completed Projects/715277613_1419293560216102_5131101776331614921_n.jpg",
+            "img/Projects_photos/Completed Projects/Dhismaha Bangiga Balli-gubadle1.jpg",
+            "img/Projects_photos/Completed Projects/Muuqaal sare bangiga ah.jpg",
+            "img/Projects_photos/Completed Projects/Wajahada hore bangiga.jpg",
+            "img/Projects_photos/Completed Projects/residential buildings.jpg",
+            "img/Projects_photos/Completed Projects/schoolImage2.jpg",
+          ],
+          details: [
+            {
+              title: "Hoobaan Project",
+              type: "Completed Project",
+              text: "A beautiful building completed by Hoobaan Construction.",
+            },
+            {
+              title: "Waaheen Market",
+              type: "Completed Project",
+              text: "An overhead market view showing the project scale.",
+            },
+            {
+              title: "Mall Facade",
+              type: "Completed Project",
+              text: "A finished mall facade designed for strong visibility.",
+            },
+            {
+              title: "Mall Interior",
+              type: "Completed Project",
+              text: "A wide mall interior prepared for active commercial use.",
+            },
+            {
+              title: "Mall Shops",
+              type: "Completed Project",
+              text: "Interior shop spaces arranged for easy customer movement.",
+            },
+            {
+              title: "Retail Spaces",
+              type: "Completed Project",
+              text: "A second retail view showing the mall's shop layout.",
+            },
+            {
+              title: "Classic Villa",
+              type: "Completed Project",
+              text: "A residential villa with a modern classic exterior.",
+            },
+            {
+              title: "Home Exterior",
+              type: "Completed Project",
+              text: "A completed home exterior with a clean residential finish.",
+            },
+            {
+              title: "Urban Building",
+              type: "Completed Project",
+              text: "A finished city project with a clean modern presence.",
+            },
+            {
+              title: "Commercial Front",
+              type: "Completed Project",
+              text: "A neat exterior built for business visibility.",
+            },
+            {
+              title: "Modern Building",
+              type: "Completed Project",
+              text: "A completed structure with sharp exterior lines.",
+            },
+            {
+              title: "Finished Exterior",
+              type: "Completed Project",
+              text: "A clean exterior view showing the completed finish.",
+            },
+            {
+              title: "Completed Structure",
+              type: "Completed Project",
+              text: "A finished structure built for reliable everyday use.",
+            },
+            {
+              title: "Balli-gubadle Bank",
+              type: "Completed Project",
+              text: "A formal bank building with a strong public-facing exterior.",
+            },
+            {
+              title: "Bank Aerial View",
+              type: "Completed Project",
+              text: "An elevated view showing the bank's full building form.",
+            },
+            {
+              title: "Bank Front View",
+              type: "Completed Project",
+              text: "A front-facing bank view with a polished formal look.",
+            },
+            {
+              title: "Residential Buildings",
+              type: "Completed Project",
+              text: "Residential work with clean form and lasting value.",
+            },
+            {
+              title: "School Building",
+              type: "Completed Project",
+              text: "A learning space completed with simple, strong design.",
+            },
+          ],
+        },
+        visuals: {
+          label: "3D visual project",
+          lightboxTitle: "3D Visual",
+          images: [
+            "img/Projects_photos/3D visualization/480045131_3007151116108244_5324562456762855712_n.jpg",
+            "img/Projects_photos/3D visualization/482356555_3031100127046676_1727858103527164084_n.jpg",
+            "img/Projects_photos/3D visualization/485157356_3041020332721322_2202113478287645277_n.jpg",
+            "img/Projects_photos/3D visualization/485161168_3040795126077176_1145324314060340934_n.jpg",
+            "img/Projects_photos/3D visualization/485314351_3041020492721306_1840694799172759912_n.jpg",
+            "img/Projects_photos/3D visualization/485334283_3040794899410532_2103431247068791994_n.jpg",
+            "img/Projects_photos/3D visualization/486285283_1061033116042150_6126198881799898064_n.jpg",
+            "img/Projects_photos/3D visualization/486382711_1061032909375504_2307524699739801787_n.jpg",
+            "img/Projects_photos/3D visualization/487857123_1067248102087318_945140743090683_n.jpg",
+            "img/Projects_photos/3D visualization/487874612_1070526328426162_5527080687847002513_n.jpg",
+            "img/Projects_photos/3D visualization/487976161_1067264702085658_7684601289874300696_n.jpg",
+            "img/Projects_photos/3D visualization/489469380_1074767801335348_2924380392407003973_n.jpg",
+            "img/Projects_photos/3D visualization/489885677_1077442631067865_9055668076713021727_n.jpg",
+            "img/Projects_photos/3D visualization/489926970_1083793770432751_4918148872011380849_n.jpg",
+            "img/Projects_photos/3D visualization/490000570_1078446674300794_6380827029778022377_n.jpg",
+            "img/Projects_photos/3D visualization/490033348_1079180530894075_5556606113553117741_n.jpg",
+            "img/Projects_photos/3D visualization/490156290_1075851817893613_8174277962743733992_n.jpg",
+            "img/Projects_photos/3D visualization/490467309_1077929694352492_5796673377083214562_n.jpg",
+            "img/Projects_photos/3D visualization/490614931_1078312784314183_5597754906015350133_n.jpg",
+            "img/Projects_photos/3D visualization/490744933_1078446597634135_2908377045156529564_n.jpg",
+            "img/Projects_photos/3D visualization/492799572_1099994698812658_8598801325027791236_n.jpg",
+            "img/Projects_photos/3D visualization/494694129_1093076726171122_7462880854743000076_n.jpg",
+            "img/Projects_photos/3D visualization/645724594_1342098571268935_4707376034634337063_n.jpg",
+            "img/Projects_photos/3D visualization/647248643_1342098471268945_8178195761234336507_n.jpg",
+            "img/Projects_photos/3D visualization/ChatGPT Image Jun 25, 2026, 08_34_46 PM.png",
+            "img/Projects_photos/3D visualization/ChatGPT Image Jun 25, 2026, 08_41_03 PM.png",
+            "img/Projects_photos/3D visualization/khaalid 2.png",
+            "img/Projects_photos/3D visualization/khaalid 4.png",
+            "img/Projects_photos/3D visualization/khaalid t3.png",
+            "img/Projects_photos/3D visualization/khaalid.png",
+            "img/Projects_photos/3D visualization/visual-01.png",
+          ],
+        },
+        interiors: {
+          label: "Interior design project",
+          lightboxTitle: "Interior Design",
+          images: [
+            "img/Projects_photos/Interior Design/487859150_1072745331537595_5485883365925189127_n.jpg",
+            "img/Projects_photos/Interior Design/488658281_1072745038204291_1451455307646652047_n.jpg",
+            "img/Projects_photos/Interior Design/488884631_1072745341537594_3506328858730895755_n.jpg",
+            "img/Projects_photos/Interior Design/488956752_1075036837975111_2522385243114897875_n.jpg",
+            "img/Projects_photos/Interior Design/489029664_1072745098204285_9136711072902371256_n.jpg",
+            "img/Projects_photos/Interior Design/489060712_1075036564641805_1510490705503862217_n.jpg",
+            "img/Projects_photos/Interior Design/489221922_1072745064870955_1674127439261666352_n.jpg",
+            "img/Projects_photos/Interior Design/489423435_1072744988204296_7593701027393773753_n.jpg",
+            "img/Projects_photos/Interior Design/489785044_1073184274827034_1843645724628214921_n.jpg",
+            "img/Projects_photos/Interior Design/489820435_1073184398160355_9139317518203978361_n.jpg",
+            "img/Projects_photos/Interior Design/489839359_1075036417975153_6973989582483406082_n.jpg",
+            "img/Projects_photos/Interior Design/490101637_1075036574641804_3636781138120760390_n.jpg",
+            "img/Projects_photos/Interior Design/490477642_1079353447543450_3158211862467944032_n.jpg",
+            "img/Projects_photos/Interior Design/490901925_1079353437543451_5844678593154887660_n.jpg",
+            "img/Projects_photos/Interior Design/491355959_1086728800139248_316625208884171836_n.jpg",
+            "img/Projects_photos/Interior Design/491921620_1086731026805692_4227368669872160236_n.jpg",
+            "img/Projects_photos/Interior Design/492004502_1086728423472619_7540397939925794606_n.jpg",
+            "img/Projects_photos/Interior Design/556239779_1213538564124937_4194962670336271729_n.jpg",
+            "img/Projects_photos/Interior Design/556278881_1213538767458250_38261647787623054_n.jpg",
+            "img/Projects_photos/Interior Design/556507805_1213538607458266_9208852261829707553_n.jpg",
+            "img/Projects_photos/Interior Design/557272647_1213538440791616_2984527812166241309_n.jpg",
+            "img/Projects_photos/Interior Design/588500049_1263717832440343_4455502966456659617_n.jpg",
+            "img/Projects_photos/Interior Design/588561559_1263717635773696_5538790326580269397_n.jpg",
+            "img/Projects_photos/Interior Design/589612293_1263717362440390_4621666739043288889_n.jpg",
+            "img/Projects_photos/Interior Design/639596114_1333759322102860_378133464101486310_n.jpg",
+            "img/Projects_photos/Interior Design/715537768_1353047296924619_9071674130394136679_n.jpg",
+            "img/Projects_photos/Interior Design/716010245_1526654662452294_2647078819353765934_n.jpg",
+            "img/Projects_photos/Interior Design/716050537_1263381655650117_1426817364302145249_n.jpg",
+            "img/Projects_photos/Interior Design/716050540_4414100418834334_227991984559317906_n.jpg",
+            "img/Projects_photos/Interior Design/717077479_1029466766094328_6074883161394309060_n.jpg",
+            "img/Projects_photos/Interior Design/717665502_1355996323090254_560463130517165427_n.jpg",
+            "img/Projects_photos/Interior Design/717960071_1383442270276427_141193924667862585_n.jpg",
+            "img/Projects_photos/Interior Design/718390848_4517082788609883_8735642202363533892_n.jpg",
+            "img/Projects_photos/Interior Design/718816989_1007799281707402_1079674520405902466_n.jpg",
+            "img/Projects_photos/Interior Design/719789514_986913087542603_3067155487329935242_n.jpg",
+            "img/Projects_photos/Interior Design/Gudaha bangiga (office setup).jpg",
+          ],
+        },
+      };
+
+      function openLightbox(type, src, title) {
+        lightboxImg.classList.add("hidden");
+        lightboxVideo.classList.add("hidden");
+        lightboxVideo.pause();
+        lightboxVideo.removeAttribute("src");
+
+        if (type === "video") {
+          lightboxVideo.src = src;
+          lightboxVideo.classList.remove("hidden");
+          lightboxVideo.load();
+          lightboxVideo.play().catch(() => {});
+        } else {
+          lightboxImg.src = src;
+          lightboxImg.alt = title;
+          lightboxImg.classList.remove("hidden");
+        }
+
+        lightboxCaption.textContent = title;
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxVideo.pause();
+        lightboxVideo.removeAttribute("src");
+        lightboxImg.removeAttribute("src");
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      function toggleFlipCard(card) {
+        const isFlipped = card.classList.toggle("is-flipped");
+        card.setAttribute("aria-pressed", String(isFlipped));
+      }
+
+      function renderBuildingFlipCards() {
+        const grid = document.querySelector('[data-flip-grid="completed"]');
+        const group = projectImageGroups.completed;
+        if (!grid || !group) return;
+
+        group.images.forEach((src, index) => {
+          const detail = group.details[index] || {
+            title: `Completed Project ${index + 1}`,
+            type: "Completed Project",
+            text: "A finished Hoobaan project with clean construction detail.",
+          };
+
+          const card = document.createElement("div");
+          card.className = "project-flip-card";
+          card.setAttribute("role", "button");
+          card.setAttribute("tabindex", "0");
+          card.setAttribute("aria-pressed", "false");
+          card.setAttribute("aria-label", `Flip ${detail.title}`);
+
+          const inner = document.createElement("div");
+          inner.className = "project-flip-inner";
+
+          const front = document.createElement("div");
+          front.className = "project-flip-face project-flip-front";
+
+          const image = document.createElement("img");
+          image.src = src;
+          image.alt = detail.title;
+          image.loading = "lazy";
+          image.decoding = "async";
+          image.className = "h-full w-full object-cover";
+
+          const badge = document.createElement("span");
+          badge.className = "project-flip-badge";
+          badge.textContent = detail.type;
+
+          front.append(image, badge);
+
+          const back = document.createElement("div");
+          back.className = "project-flip-face project-flip-back";
+          back.innerHTML = `
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-brand-red">${detail.type}</p>
+              <h4 class="mt-4 text-2xl font-black leading-tight text-white">${detail.title}</h4>
+              <div class="my-5 h-1 w-12 rounded-full bg-brand-red"></div>
+              <p class="text-sm leading-7 text-white/72">${detail.text}</p>
+            </div>
+            <button type="button" class="inline-flex w-fit items-center justify-center rounded-full border border-white/18 bg-white/10 px-5 py-3 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-brand-red hover:bg-brand-red">
+              View Photo
+            </button>
+          `;
+
+          back.querySelector("button").addEventListener("click", (event) => {
+            event.stopPropagation();
+            openLightbox("image", src, detail.title);
+          });
+
+          card.addEventListener("click", () => toggleFlipCard(card));
+          card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              toggleFlipCard(card);
+            }
+          });
+
+          inner.append(front, back);
+          card.appendChild(inner);
+          grid.appendChild(card);
+        });
+      }
+
+      function renderMarqueeGallery(key) {
+        const track = document.querySelector(`[data-marquee-strip="${key}"]`);
+        const group = projectImageGroups[key];
+        if (!track || !group) return;
+
+        [...group.images, ...group.images].forEach((src, index) => {
+          const realIndex = (index % group.images.length) + 1;
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "project-marquee-card";
+          button.setAttribute(
+            "aria-label",
+            `Open ${group.label} image ${realIndex}`,
+          );
+          button.addEventListener("click", () => {
+            openLightbox("image", src, group.lightboxTitle);
+          });
+
+          const image = document.createElement("img");
+          image.src = src;
+          image.alt = `${group.label} ${realIndex}`;
+          image.loading = "lazy";
+          image.decoding = "async";
+          image.className = "h-full w-full object-cover";
+
+          button.appendChild(image);
+          track.appendChild(button);
+        });
+      }
+
+      renderBuildingFlipCards();
+      renderMarqueeGallery("visuals");
+      renderMarqueeGallery("interiors");
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
+          closeLightbox();
+        }
+      });
+
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (window.gsap && !reduceMotion) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("nav > div:first-child", {
+          y: -24,
+          opacity: 0,
+          duration: 0.75,
+          ease: "power3.out",
+        });
+
+        gsap.from(".projects-hero .relative.z-10 > div:first-child > *", {
+          y: 28,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.12,
+          delay: 0.15,
+          ease: "power3.out",
+        });
+
+        gsap.from(".video-showcase .relative.z-10 > *", {
+          scrollTrigger: {
+            trigger: ".video-showcase",
+            start: "top 76%",
+          },
+          y: 38,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.14,
+          ease: "power3.out",
+        });
+
+        gsap.from(".gallery-shell .relative.z-10 > *", {
+          scrollTrigger: {
+            trigger: ".gallery-shell",
+            start: "top 76%",
+          },
+          y: 38,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.14,
+          ease: "power3.out",
+        });
+      }
+    </script>
+  </body>
+</html>
