@@ -162,6 +162,8 @@
         min-height: 22rem;
         cursor: pointer;
         perspective: 1400px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
 
       .project-flip-inner {
@@ -169,12 +171,13 @@
         height: 100%;
         min-height: 22rem;
         transform-style: preserve-3d;
-        transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateZ(0);
+        transition: transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform;
       }
 
-      .project-flip-card:hover .project-flip-inner,
       .project-flip-card.is-flipped .project-flip-inner {
-        transform: rotateY(180deg);
+        transform: rotateY(180deg) translateZ(0);
       }
 
       .project-flip-face {
@@ -184,11 +187,13 @@
         border-radius: 1rem;
         border: 1px solid rgba(255, 255, 255, 0.13);
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         box-shadow: 0 22px 58px rgba(0, 0, 0, 0.28);
       }
 
       .project-flip-front {
         background: rgba(255, 255, 255, 0.06);
+        transform: rotateY(0deg) translateZ(0);
       }
 
       .project-flip-front::after {
@@ -208,8 +213,7 @@
         transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
-      .project-flip-card:hover img,
-      .project-marquee-card:hover img {
+      .project-flip-card.is-flipped img {
         transform: scale(1.07);
       }
 
@@ -232,7 +236,7 @@
 
       .project-flip-back {
         display: flex;
-        transform: rotateY(180deg);
+        transform: rotateY(180deg) translateZ(0);
         flex-direction: column;
         justify-content: space-between;
         gap: 1.5rem;
@@ -240,6 +244,17 @@
           linear-gradient(135deg, rgba(185, 28, 28, 0.2), transparent 34%),
           linear-gradient(180deg, #061e46, #041126);
         padding: 1.45rem;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .project-flip-card:hover .project-flip-inner {
+          transform: rotateY(180deg) translateZ(0);
+        }
+
+        .project-flip-card:hover img,
+        .project-marquee-card:hover img {
+          transform: scale(1.07);
+        }
       }
 
       .project-marquee-window {
