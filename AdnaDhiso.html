@@ -155,7 +155,103 @@
           />
           Adna Dhiso
         </a>
+
+        <button
+          id="mobile-menu-btn"
+          class="relative z-[120] rounded-xl border border-white/20 bg-white/10 p-2.5 text-white shadow-sm transition hover:bg-white/15 lg:hidden"
+          aria-label="Toggle mobile menu"
+        >
+          <svg
+            id="hamburger-icon"
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            id="close-icon"
+            class="hidden h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
+
+      <div
+        id="mobile-menu"
+        class="fixed left-0 top-0 z-[110] flex h-[100dvh] w-[82%] max-w-sm -translate-x-full flex-col border-r border-white/15 bg-brand-navy/95 shadow-2xl backdrop-blur-2xl transition-transform duration-300 ease-in-out"
+      >
+        <div class="flex h-28 items-center px-7">
+          <span
+            class="text-xs font-black uppercase tracking-[0.22em] text-white/50"
+            >Menu</span
+          >
+        </div>
+        <div class="flex flex-1 flex-col px-7 pb-10">
+          <nav class="flex flex-col gap-2 text-lg font-extrabold text-white">
+            <a
+              href="Home.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Home <span>&rarr;</span>
+            </a>
+            <a
+              href="about.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              About <span>&rarr;</span>
+            </a>
+            <a
+              href="services.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Services <span>&rarr;</span>
+            </a>
+            <a
+              href="Projects.html"
+              class="flex items-center justify-between border-b border-white/10 px-4 py-4 transition hover:text-brand-red"
+            >
+              Projects <span>&rarr;</span>
+            </a>
+          </nav>
+          <div class="mt-auto pt-8">
+            <a
+              href="#adna-dhiso-form"
+              onclick="toggleMenu()"
+              class="flex items-center justify-center gap-2 rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
+            >
+              <img
+                src="img/Projects_photos/implementation.png"
+                alt=""
+                aria-hidden="true"
+                class="h-5 w-5 object-contain brightness-0 invert"
+              />
+              Adna Dhiso
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="menu-overlay"
+        class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
+        onclick="toggleMenu()"
+      ></div>
     </nav>
 
     <main class="relative overflow-hidden pb-20 pt-14 sm:pt-16">
@@ -477,10 +573,29 @@
     </footer>
 
     <script>
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("menu-overlay");
+      const hamburgerIcon = document.getElementById("hamburger-icon");
+      const closeIcon = document.getElementById("close-icon");
       const form = document.getElementById("build-request-form");
       const imageInput = document.getElementById("reference-image");
       const imageName = document.getElementById("reference-image-name");
       const whatsappNumber = "252638833011";
+
+      function toggleMenu() {
+        mobileMenu.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+        hamburgerIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden");
+      }
+
+      menuBtn.addEventListener("click", toggleMenu);
+
+      document.querySelectorAll("#mobile-menu nav a").forEach((link) => {
+        link.addEventListener("click", toggleMenu);
+      });
 
       imageInput.addEventListener("change", () => {
         const file = imageInput.files?.[0];

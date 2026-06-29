@@ -615,16 +615,35 @@
           </div>
 
           <div
-            class="mt-12 overflow-hidden rounded-[1.65rem] border border-white/14 bg-white/[0.055] p-3 shadow-[0_32px_95px_rgba(0,0,0,0.34)] backdrop-blur-xl"
+            class="relative mt-12 overflow-hidden rounded-[1.65rem] border border-white/14 bg-white/[0.055] p-3 shadow-[0_32px_95px_rgba(0,0,0,0.34)] backdrop-blur-xl"
           >
             <video
               class="aspect-video w-full rounded-[1.2rem] bg-brand-dark object-cover"
               src="img/Videos/Hobaan G+1.mp4"
               poster="img/Videos/Hobaan G+1-poster.jpg"
-              controls
               playsinline
               preload="metadata"
+              aria-label="Hoobaan project video preview"
             ></video>
+            <button
+              type="button"
+              class="absolute inset-3 z-10 flex items-center justify-center rounded-[1.2rem] bg-brand-dark/10 text-white transition hover:bg-brand-dark/25"
+              onclick="openLightbox('video', 'img/Videos/Hobaan G+1.mp4', 'Daawo shaqada Hoobaan')"
+              aria-label="Open Hoobaan project video"
+            >
+              <span
+                class="flex h-20 w-20 items-center justify-center rounded-full border border-white/40 bg-brand-red/95 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur transition hover:scale-105 sm:h-24 sm:w-24"
+              >
+                <svg
+                  class="ml-1 h-9 w-9 sm:h-11 sm:w-11"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
       </section>
@@ -1073,7 +1092,7 @@
         <video
           id="lightbox-video"
           src=""
-          class="mx-auto hidden max-w-full shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+          class="mx-auto hidden aspect-video max-h-[82dvh] w-full rounded-2xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
           controls
           playsinline
         ></video>

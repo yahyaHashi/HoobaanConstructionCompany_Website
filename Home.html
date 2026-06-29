@@ -454,17 +454,36 @@
           <div
             class="video-shell relative w-full max-w-5xl rounded-[2rem] bg-white/10 p-3 shadow-[0_28px_80px_rgba(0,0,0,0.42)] transition duration-500 hover:scale-[1.015]"
           >
-            <div class="overflow-hidden rounded-[1.6rem] bg-black">
+            <div class="relative overflow-hidden rounded-[1.6rem] bg-black">
               <video
                 id="hoobaanVideo"
-                controls
                 preload="metadata"
                 poster="img/team photos/Video thumnail.jpg"
                 class="block aspect-video w-full rounded-[1.6rem] object-cover"
+                aria-label="Hoobaan work video preview"
               >
                 <source src="img/Videos/testimonial.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+              <button
+                type="button"
+                class="absolute inset-3 z-10 flex items-center justify-center rounded-[1.6rem] bg-brand-navy/10 text-white transition hover:bg-brand-navy/20"
+                onclick="openVideoModal('img/Videos/testimonial.mp4', 'Hoobaan Work In Action', 172)"
+                aria-label="Open Hoobaan work video"
+              >
+                <span
+                  class="flex h-20 w-20 items-center justify-center rounded-full border border-white/40 bg-brand-red/95 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur transition hover:scale-105 sm:h-24 sm:w-24"
+                >
+                  <svg
+                    class="ml-1 h-9 w-9 sm:h-11 sm:w-11"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -717,9 +736,51 @@
       </div>
     </footer>
 
+    <div
+      id="video-modal"
+      class="fixed inset-0 z-[220] hidden items-center justify-center bg-[#020916]/94 p-4 backdrop-blur-md"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        class="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/16"
+        onclick="closeVideoModal()"
+        aria-label="Close video"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="w-full max-w-6xl">
+        <video
+          id="modal-video"
+          class="mx-auto aspect-video max-h-[82dvh] w-full rounded-2xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.5)]"
+          controls
+          playsinline
+        ></video>
+        <p
+          id="modal-video-caption"
+          class="mx-auto mt-4 max-w-3xl text-center text-xs font-black uppercase tracking-[0.18em] text-white/72 sm:text-sm"
+        ></p>
+      </div>
+    </div>
+
 
     <script>
       const video = document.getElementById("hoobaanVideo");
+      const videoModal = document.getElementById("video-modal");
+      const modalVideo = document.getElementById("modal-video");
+      const modalVideoCaption = document.getElementById("modal-video-caption");
       const stopTime = 172;
 
       if (video) {
@@ -730,6 +791,46 @@
           }
         });
       }
+
+      function openVideoModal(src, title, modalStopTime) {
+        modalVideo.src = src;
+        modalVideo.dataset.stopTime = modalStopTime || "";
+        modalVideoCaption.textContent = title;
+        videoModal.classList.remove("hidden");
+        videoModal.classList.add("flex");
+        videoModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("overflow-hidden");
+        modalVideo.load();
+        modalVideo.play().catch(() => {});
+      }
+
+      function closeVideoModal() {
+        videoModal.classList.add("hidden");
+        videoModal.classList.remove("flex");
+        videoModal.setAttribute("aria-hidden", "true");
+        modalVideo.pause();
+        modalVideo.removeAttribute("src");
+        modalVideoCaption.textContent = "";
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      modalVideo.addEventListener("timeupdate", function () {
+        const modalStopTime = Number(this.dataset.stopTime);
+        if (modalStopTime && this.currentTime >= modalStopTime) {
+          this.pause();
+          this.currentTime = 0;
+        }
+      });
+
+      videoModal.addEventListener("click", (event) => {
+        if (event.target === videoModal) closeVideoModal();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !videoModal.classList.contains("hidden")) {
+          closeVideoModal();
+        }
+      });
     </script>
 
     <script>
