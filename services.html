@@ -1187,7 +1187,7 @@
       if (window.gsap && !reduceMotion) {
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.from("nav > div", {
+        gsap.from("body > nav > div:first-child", {
           y: -24,
           opacity: 0,
           duration: 0.75,
