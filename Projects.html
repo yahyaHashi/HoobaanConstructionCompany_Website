@@ -1448,9 +1448,12 @@
         document.body.classList.remove("overflow-hidden");
       }
 
-      function toggleFlipCard(card) {
-        const isFlipped = card.classList.toggle("is-flipped");
-        card.setAttribute("aria-pressed", String(isFlipped));
+      function activateFlipCard(card) {
+        document.querySelectorAll(".project-flip-card").forEach((item) => {
+          const isCurrent = item === card;
+          item.classList.toggle("is-flipped", isCurrent);
+          item.setAttribute("aria-pressed", String(isCurrent));
+        });
       }
 
       function renderBuildingFlipCards() {
@@ -1510,11 +1513,15 @@
             openLightbox("image", src, detail.title);
           });
 
-          card.addEventListener("click", () => toggleFlipCard(card));
+          card.addEventListener("pointerenter", () => activateFlipCard(card));
+          card.addEventListener("click", () => activateFlipCard(card));
+          card.addEventListener("touchstart", () => activateFlipCard(card), {
+            passive: true,
+          });
           card.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
               event.preventDefault();
-              toggleFlipCard(card);
+              activateFlipCard(card);
             }
           });
 
