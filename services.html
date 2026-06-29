@@ -459,13 +459,13 @@
           <div class="hero-cta-actions flex flex-col gap-4 sm:flex-row">
             <a
               href="#our-services"
-              class="inline-flex min-h-14 items-center justify-center rounded-xl bg-brand-red px-9 text-base font-black text-white shadow-[0_18px_36px_rgba(185,28,28,0.28)] transition hover:-translate-y-1 hover:bg-red-700"
+              class="inline-flex min-h-14 items-center justify-center rounded-xl bg-brand-red px-9 text-base font-black text-white shadow-[0_18px_36px_rgba(185,28,28,0.28)] hover:bg-red-700"
             >
               Eeg Adeegyada
             </a>
             <a
               href="Home.html#contact"
-              class="inline-flex min-h-14 items-center justify-center rounded-xl border border-white/20 bg-white/8 px-9 text-base font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/12"
+              class="inline-flex min-h-14 items-center justify-center rounded-xl border border-white/20 bg-white/8 px-9 text-base font-black text-white backdrop-blur hover:bg-white/12"
             >
               Nala Soo Xidhiidh
             </a>
@@ -1208,26 +1208,6 @@
           delay: 0.15,
           ease: "power3.out",
         });
-
-        gsap.fromTo(
-          ".hero-cta-actions",
-          {
-            y: 36,
-            opacity: 0,
-          },
-          {
-            scrollTrigger: {
-              trigger: ".services-hero",
-              start: "top+=260 top",
-              end: "bottom 72%",
-              toggleActions: "play none none reverse",
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: "power3.out",
-          },
-        );
 
         gsap.from("#our-services .mx-auto.max-w-3xl > *", {
           scrollTrigger: {
