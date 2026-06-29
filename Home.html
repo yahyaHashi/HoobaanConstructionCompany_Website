@@ -326,7 +326,6 @@
       <div class="mt-auto pt-8">
         <a
           href="Home.html#contact"
-          onclick="toggleMenu()"
           class="block rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
         >
           Contact Us
@@ -339,7 +338,6 @@
   <div
     id="menu-overlay"
     class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
-    onclick="toggleMenu()"
   ></div>
 </nav>
 
@@ -361,7 +359,7 @@
       </div>
 
       <div
-        class="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-7xl items-start px-6 pb-16 pt-8 sm:pt-10 lg:px-8 lg:pt-10"
+        class="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-7xl items-start px-6 pb-16 pt-4 sm:pt-6 lg:px-8 lg:pt-6"
       >
         <div class="reveal max-w-2xl">
           <h1
@@ -472,10 +470,10 @@
                 aria-label="Open Hoobaan work video"
               >
                 <span
-                  class="flex h-20 w-20 items-center justify-center rounded-full border border-white/40 bg-brand-red/95 shadow-[0_18px_45px_rgba(0,0,0,0.35)] backdrop-blur transition hover:scale-105 sm:h-24 sm:w-24"
+                  class="flex h-20 w-20 items-center justify-center text-white drop-shadow-[0_10px_24px_rgba(0,0,0,0.65)] transition hover:scale-110 sm:h-24 sm:w-24"
                 >
                   <svg
-                    class="ml-1 h-9 w-9 sm:h-11 sm:w-11"
+                    class="ml-1 h-14 w-14 sm:h-16 sm:w-16"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -841,52 +839,91 @@
       const closeIcon = document.getElementById("close-icon");
       const links = document.querySelectorAll("#mobile-menu nav a");
 
+      function isMenuOpen() {
+        return !menu.classList.contains("-translate-x-full");
+      }
+
+      function openMenu() {
+        menu.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+        if (hamburger) hamburger.classList.add("hidden");
+        if (closeIcon) closeIcon.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeMenu() {
+        menu.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+        if (hamburger) hamburger.classList.remove("hidden");
+        if (closeIcon) closeIcon.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      }
+
       function toggleMenu() {
-        menu.classList.toggle("-translate-x-full");
-        overlay.classList.toggle("hidden");
-        if (hamburger) hamburger.classList.toggle("hidden");
-        if (closeIcon) closeIcon.classList.toggle("hidden");
-        document.body.classList.toggle("overflow-hidden");
+        isMenuOpen() ? closeMenu() : openMenu();
       }
 
       if (btn) btn.addEventListener("click", toggleMenu);
-      if (overlay) overlay.addEventListener("click", toggleMenu);
+      if (overlay) overlay.addEventListener("click", closeMenu);
 
       links.forEach((link) => {
-        link.addEventListener("click", toggleMenu);
+        link.addEventListener("click", closeMenu);
       });
 
       let touchStartX = 0;
-      let touchEndX = 0;
+      let touchStartY = 0;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
 
-      menu.addEventListener(
+      function handleSwipeGesture(startX, startY, endX, endY) {
+        const deltaX = endX - startX;
+        const deltaY = Math.abs(endY - startY);
+        const minSwipe = 45;
+        const edgeStart = 34;
+
+        if (deltaY > 70 || Math.abs(deltaX) < minSwipe) return;
+        if (!isMenuOpen() && startX <= edgeStart && deltaX > 0) openMenu();
+        if (isMenuOpen() && deltaX < 0) closeMenu();
+      }
+
+      document.addEventListener(
         "touchstart",
         (e) => {
-          touchStartX = e.changedTouches[0].screenX;
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
         },
         { passive: true },
       );
 
-      menu.addEventListener(
+      document.addEventListener(
         "touchend",
         (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          handleSwipe();
+          handleSwipeGesture(
+            touchStartX,
+            touchStartY,
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY,
+          );
         },
         { passive: true },
       );
 
-      function handleSwipe() {
-        const swipeDistance = touchStartX - touchEndX;
-        const minSwipeThreshold = 50;
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          pointerStartX = e.clientX;
+          pointerStartY = e.clientY;
+        },
+        { passive: true },
+      );
 
-        if (
-          swipeDistance > minSwipeThreshold &&
-          !menu.classList.contains("-translate-x-full")
-        ) {
-          toggleMenu();
-        }
-      }
+      document.addEventListener(
+        "pointerup",
+        (e) => {
+          handleSwipeGesture(pointerStartX, pointerStartY, e.clientX, e.clientY);
+        },
+        { passive: true },
+      );
     </script>
 
     <script>

@@ -397,7 +397,6 @@
           <div class="mt-auto pt-8">
             <a
               href="Home.html#contact"
-              onclick="toggleMenu()"
               class="block rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
             >
               Contact Us
@@ -408,7 +407,6 @@
       <div
         id="menu-overlay"
         class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
-        onclick="toggleMenu()"
       ></div>
     </nav>
 
@@ -1094,17 +1092,93 @@
       const overlay = document.getElementById("menu-overlay");
       const hamburger = document.getElementById("hamburger-icon");
       const closeIcon = document.getElementById("close-icon");
+      const links = document.querySelectorAll("#mobile-menu nav a");
+
+      function isMenuOpen() {
+        return !menu.classList.contains("-translate-x-full");
+      }
+
+      function openMenu() {
+        menu.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+        if (hamburger) hamburger.classList.add("hidden");
+        if (closeIcon) closeIcon.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeMenu() {
+        menu.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+        if (hamburger) hamburger.classList.remove("hidden");
+        if (closeIcon) closeIcon.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      }
 
       function toggleMenu() {
-        menu.classList.toggle("-translate-x-full");
-        overlay.classList.toggle("hidden");
-        if (hamburger) hamburger.classList.toggle("hidden");
-        if (closeIcon) closeIcon.classList.toggle("hidden");
-        document.body.classList.toggle("overflow-hidden");
+        isMenuOpen() ? closeMenu() : openMenu();
       }
 
       if (btn) btn.addEventListener("click", toggleMenu);
-      if (overlay) overlay.addEventListener("click", toggleMenu);
+      if (overlay) overlay.addEventListener("click", closeMenu);
+
+      links.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+
+      function handleSwipeGesture(startX, startY, endX, endY) {
+        const deltaX = endX - startX;
+        const deltaY = Math.abs(endY - startY);
+        const minSwipe = 45;
+        const edgeStart = 34;
+
+        if (deltaY > 70 || Math.abs(deltaX) < minSwipe) return;
+        if (!isMenuOpen() && startX <= edgeStart && deltaX > 0) openMenu();
+        if (isMenuOpen() && deltaX < 0) closeMenu();
+      }
+
+      document.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "touchend",
+        (e) => {
+          handleSwipeGesture(
+            touchStartX,
+            touchStartY,
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY,
+          );
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          pointerStartX = e.clientX;
+          pointerStartY = e.clientY;
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerup",
+        (e) => {
+          handleSwipeGesture(pointerStartX, pointerStartY, e.clientX, e.clientY);
+        },
+        { passive: true },
+      );
 
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
