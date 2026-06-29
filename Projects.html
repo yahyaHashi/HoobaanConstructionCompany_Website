@@ -1419,6 +1419,7 @@
         lightboxVideo.classList.add("hidden");
         lightboxVideo.pause();
         lightboxVideo.removeAttribute("src");
+        lightbox.dataset.mediaType = type;
 
         if (type === "video") {
           lightboxVideo.src = src;
@@ -1616,7 +1617,14 @@
       renderMarqueeGallery("interiors");
 
       lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) closeLightbox();
+        if (
+          lightbox.dataset.mediaType === "video" &&
+          event.target.closest("#lightbox-video")
+        ) {
+          return;
+        }
+
+        closeLightbox();
       });
 
       document.addEventListener("keydown", (event) => {
