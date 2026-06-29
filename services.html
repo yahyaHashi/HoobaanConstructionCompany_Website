@@ -1084,6 +1084,28 @@
       </section>
     </main>
 
+    <button
+      id="back-to-top"
+      type="button"
+      class="fixed bottom-5 right-5 z-[95] flex h-12 w-12 translate-y-4 items-center justify-center rounded-full border border-white/20 bg-brand-red text-white opacity-0 shadow-[0_18px_38px_rgba(6,27,73,0.28)] transition duration-300 hover:bg-[#991b1b] focus:outline-none focus:ring-2 focus:ring-white/70 sm:bottom-7 sm:right-7"
+      aria-label="Back to top"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </button>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
@@ -1304,6 +1326,27 @@
           delay: 0.1,
           ease: "power3.out",
         });
+      }
+
+      const backToTopBtn = document.getElementById("back-to-top");
+
+      function toggleBackToTop() {
+        const isVisible = window.scrollY > 520;
+        backToTopBtn.classList.toggle("opacity-0", !isVisible);
+        backToTopBtn.classList.toggle("pointer-events-none", !isVisible);
+        backToTopBtn.classList.toggle("translate-y-4", !isVisible);
+      }
+
+      if (backToTopBtn) {
+        backToTopBtn.classList.add("pointer-events-none");
+        window.addEventListener("scroll", toggleBackToTop, { passive: true });
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
+        });
+        toggleBackToTop();
       }
     </script>
   </body>
