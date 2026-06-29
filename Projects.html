@@ -1706,7 +1706,10 @@
       const backToTopBtn = document.getElementById("back-to-top");
 
       function toggleBackToTop() {
-        const isVisible = window.scrollY > 520;
+        const distanceFromBottom =
+          document.documentElement.scrollHeight -
+          (window.scrollY + window.innerHeight);
+        const isVisible = distanceFromBottom < 360;
         backToTopBtn.classList.toggle("opacity-0", !isVisible);
         backToTopBtn.classList.toggle("pointer-events-none", !isVisible);
         backToTopBtn.classList.toggle("translate-y-4", !isVisible);
