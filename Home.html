@@ -61,6 +61,17 @@
         background: #061b49;
       }
 
+      #back-to-top .back-to-top-tooltip {
+        opacity: 0 !important;
+        transform: translateY(4px);
+      }
+
+      #back-to-top:hover .back-to-top-tooltip,
+      #back-to-top:focus-visible .back-to-top-tooltip {
+        opacity: 1 !important;
+        transform: translateY(0);
+      }
+
       .reveal {
         opacity: 0;
         transform: translateY(22px);
@@ -929,9 +940,15 @@
     <button
       id="back-to-top"
       type="button"
-      class="fixed bottom-24 right-5 z-[95] flex h-12 w-12 translate-y-4 items-center justify-center rounded-full border border-white/20 bg-brand-red text-white opacity-0 shadow-[0_18px_38px_rgba(6,27,73,0.28)] transition duration-300 hover:bg-[#991b1b] focus:outline-none focus:ring-2 focus:ring-white/70 sm:bottom-24 sm:right-7"
+      class="group fixed bottom-24 right-5 z-[95] flex h-12 w-12 translate-y-4 items-center justify-center rounded-full border border-white/20 bg-brand-red text-white opacity-0 shadow-[0_18px_38px_rgba(6,27,73,0.28)] transition duration-300 hover:bg-[#991b1b] focus:outline-none focus:ring-2 focus:ring-white/70 sm:bottom-24 sm:right-7"
       aria-label="Back to top"
+      title="Back to top"
     >
+      <span
+        class="back-to-top-tooltip pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-md bg-white px-2.5 py-1 text-xs font-black text-brand-navy opacity-0 shadow-lg transition duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+      >
+        Back to top
+      </span>
       <svg
         class="h-6 w-6"
         fill="none"
