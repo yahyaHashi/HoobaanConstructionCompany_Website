@@ -105,44 +105,6 @@
         transform: translateY(0);
       }
 
-      .stat-card {
-        position: relative;
-        overflow: hidden;
-        background:
-          radial-gradient(
-            circle at 50% 0%,
-            rgba(255, 255, 255, 0.1),
-            transparent 34%
-          ),
-          linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.045)
-          );
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.12),
-          0 18px 45px rgba(0, 0, 0, 0.2);
-      }
-
-      .stat-card::before {
-        content: "";
-        position: absolute;
-        inset: 0 0 auto 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.75),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.35s ease;
-      }
-
-      .stat-card:hover::before {
-        opacity: 1;
-      }
-
       .stat-number {
         font-variant-numeric: tabular-nums;
       }
@@ -558,67 +520,39 @@
 
       <section
         id="who-we-are"
-        class="blueprint relative overflow-hidden bg-brand-navy py-16 lg:py-20"
+        class="blueprint relative overflow-hidden bg-brand-navy px-6 py-20 lg:px-8"
       >
-        <div class="dots absolute left-32 top-12 h-32 w-44 opacity-20"></div>
-        <div
-          class="dots absolute bottom-20 right-24 h-32 w-44 opacity-20"
-        ></div>
-        <div
-          class="absolute left-[28%] top-10 hidden h-72 w-64 border border-white/10 opacity-25 [clip-path:polygon(50%_0,100%_28%,100%_100%,0_100%,0_28%)] lg:block"
-        ></div>
-
-        <div
-          class="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1.55fr] lg:px-8"
-        >
-          <div class="reveal">
-            <p
-              class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
-            >
-              Who We Are
-            </p>
-            <div class="mt-3 h-1 w-12 rounded-full bg-brand-red"></div>
-            <h2
-              class="mt-6 text-4xl font-black leading-tight tracking-[-0.03em] sm:text-5xl"
-            >
-              Your Vision,<br />
-              Our <span class="text-brand-red">Commitment.</span>
-            </h2>
-            <p class="mt-6 max-w-md text-base leading-8 text-white/70">
-              We are a team of passionate engineers, architects, and builders
-              dedicated to creating spaces that inspire and last for
-              generations.
-            </p>
-            <a
-              href="services.html"
-              class="mt-8 inline-flex items-center gap-3 rounded-xl bg-brand-red px-6 py-4 text-sm font-black text-white shadow-[0_18px_34px_rgba(6,27,73,0.28)] transition hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#991b1b]"
-            >
-              Learn More About Us
-              <svg
-                class="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+        <div class="relative mx-auto max-w-7xl border-y border-white/10 py-12">
+          <div
+            class="grid gap-12 lg:grid-cols-[0.9fr_1.6fr] lg:items-center"
+          >
+            <div class="reveal max-w-xl">
+              <p
+                class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2.2"
-                  d="M5 12h14m-6-6 6 6-6 6"
-                />
-              </svg>
-            </a>
-          </div>
+                Who We Are
+              </p>
+              <div class="mt-3 h-1 w-12 rounded-full bg-brand-red"></div>
+              <h2
+                class="mt-6 text-4xl font-black leading-tight tracking-[-0.03em] sm:text-5xl"
+              >
+                Your Vision,<br />
+                Our <span class="text-brand-red">Commitment.</span>
+              </h2>
+              <p class="mt-6 max-w-md text-base leading-8 text-white/70">
+                We are a team of passionate engineers, architects, and builders
+                dedicated to creating spaces that inspire and last for
+                generations.
+              </p>
+            </div>
 
-          <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             <div
-              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
+              class="grid gap-8 sm:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-white/10"
             >
-              <div
-                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
-              >
+              <div class="reveal lg:pr-8">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15">
                 <svg
-                  class="lucide lucide-clipboard-check h-8 w-8"
+                  class="lucide lucide-clipboard-check h-7 w-7"
                   fill="none"
                   stroke="currentColor"
                   stroke-linecap="round"
@@ -634,28 +568,22 @@
                 </svg>
               </div>
               <h3
-                class="stat-number mt-6 text-5xl font-black tracking-tight"
-                data-target="150"
+                class="stat-number mt-6 text-4xl font-black tracking-tight text-white sm:text-5xl"
+                data-target="200"
                 data-suffix="+"
               >
                 0
               </h3>
-              <div
-                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
-              ></div>
-              <p class="mt-3 text-sm font-bold text-white/80">
+              <div class="mt-3 h-0.5 w-12 rounded-full bg-brand-red"></div>
+              <p class="mt-3 text-sm font-bold text-white/75">
                 Projects Completed
               </p>
-            </div>
+              </div>
 
-            <div
-              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
-            >
-              <div
-                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
-              >
+              <div class="reveal lg:px-8">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15">
                 <svg
-                  class="lucide lucide-award h-8 w-8"
+                  class="lucide lucide-award h-7 w-7"
                   fill="none"
                   stroke="currentColor"
                   stroke-linecap="round"
@@ -670,63 +598,22 @@
                 </svg>
               </div>
               <h3
-                class="stat-number mt-6 text-5xl font-black tracking-tight"
+                class="stat-number mt-6 text-4xl font-black tracking-tight text-white sm:text-5xl"
                 data-target="10"
                 data-suffix="+"
               >
                 0
               </h3>
-              <div
-                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
-              ></div>
-              <p class="mt-3 text-sm font-bold text-white/80">
+              <div class="mt-3 h-0.5 w-12 rounded-full bg-brand-red"></div>
+              <p class="mt-3 text-sm font-bold text-white/75">
                 Years Experience
               </p>
-            </div>
-
-            <div
-              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
-            >
-              <div
-                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
-              >
-                <svg
-                  class="lucide lucide-user-check h-8 w-8"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.8"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="m16 11 2 2 4-4" />
-                </svg>
               </div>
-              <h3
-                class="stat-number mt-6 text-5xl font-black tracking-tight"
-                data-target="250"
-                data-suffix="+"
-              >
-                0
-              </h3>
-              <div
-                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
-              ></div>
-              <p class="mt-3 text-sm font-bold text-white/80">
-                Skilled Professionals
-              </p>
-            </div>
 
-            <div
-              class="stat-card reveal rounded-2xl border border-white/15 p-6 text-center backdrop-blur-xl transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_24px_60px_rgba(26,54,115,0.28)]"
-            >
-              <div
-                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
-              >
+              <div class="reveal lg:pl-8">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15">
                 <svg
-                  class="lucide lucide-badge-check h-8 w-8"
+                  class="lucide lucide-badge-check h-7 w-7"
                   fill="none"
                   stroke="currentColor"
                   stroke-linecap="round"
@@ -741,18 +628,17 @@
                 </svg>
               </div>
               <h3
-                class="stat-number mt-6 text-5xl font-black tracking-tight"
+                class="stat-number mt-6 text-4xl font-black tracking-tight text-white sm:text-5xl"
                 data-target="100"
                 data-suffix="%"
               >
                 0
               </h3>
-              <div
-                class="mx-auto mt-3 h-0.5 w-12 rounded-full bg-brand-red"
-              ></div>
-              <p class="mt-3 text-sm font-bold text-white/80">
+              <div class="mt-3 h-0.5 w-12 rounded-full bg-brand-red"></div>
+              <p class="mt-3 text-sm font-bold text-white/75">
                 Commitment to Quality
               </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1538,7 +1424,12 @@
       document.addEventListener(
         "pointerup",
         (e) => {
-          handleSwipeGesture(pointerStartX, pointerStartY, e.clientX, e.clientY);
+          handleSwipeGesture(
+            pointerStartX,
+            pointerStartY,
+            e.clientX,
+            e.clientY,
+          );
         },
         { passive: true },
       );
