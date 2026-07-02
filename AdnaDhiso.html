@@ -460,63 +460,6 @@
                   ></textarea>
                 </label>
 
-                <label class="block sm:col-span-2 lg:col-span-2">
-                  <span class="mb-2 block text-sm font-bold text-white/72"
-                    >Naqshad ama sawirka jagada</span
-                  >
-                  <input
-                    id="reference-image"
-                    class="sr-only"
-                    type="file"
-                    name="referenceImage"
-                    accept="image/*"
-                  />
-                  <span
-                    class="flex min-h-36 cursor-pointer flex-col justify-center rounded-xl border-2 border-dashed border-[#15396d] bg-[#09214b] px-5 py-5 text-left transition hover:border-brand-red hover:bg-[#0b285a]"
-                  >
-                    <span class="flex items-center gap-4">
-                      <span
-                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-red text-white"
-                      >
-                        <svg
-                          class="h-5 w-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 16l4.6-4.6a2 2 0 012.8 0L16 16m-2-2 1.6-1.6a2 2 0 012.8 0L20 14m-4-7h.01M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </span>
-                      <span>
-                        <span class="block text-base font-black text-white">
-                          Upload image
-                        </span>
-                        <span
-                          id="reference-image-name"
-                          class="mt-1 block text-sm font-semibold text-white/46"
-                        >
-                          Naqshadda ama sawirka jagada ku dar
-                        </span>
-                        <span
-                          class="mt-2 block text-xs font-semibold leading-5 text-white/42"
-                        >
-                          Sawirka WhatsApp si automatic ah uma raaco; marka
-                          WhatsApp furmo gacanta ku lifaaq.
-                        </span>
-                      </span>
-                    </span>
-                    <span
-                      class="mt-4 inline-flex w-fit rounded-lg bg-brand-red px-4 py-2.5 text-sm font-black text-white shadow-[0_14px_32px_rgba(185,28,28,0.24)]"
-                    >
-                      Dooro sawir
-                    </span>
-                  </span>
-                </label>
               </div>
 
               <div
@@ -524,7 +467,7 @@
               >
                 <p class="max-w-md text-sm leading-6 text-white/50">
                   Marka aad dirto, fariin diyaarsan ayaa WhatsApp ugu furmaysa
-                  kooxda Hoobaan. Sawir kasta gacanta WhatsApp ugu lifaaq.
+                  kooxda Hoobaan.
                 </p>
                 <button
                   type="submit"
@@ -578,10 +521,6 @@
                 Wuu nasoo gaadhay codsigaagu. Kooxda Hoobaan Construction
                 Company way kula soo xidhiidhi doontaa sida ugu dhakhsaha badan.
               </p>
-              <p
-                id="image-attachment-reminder"
-                class="mx-auto mt-4 hidden max-w-xl rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-sm font-bold leading-6 text-white/70"
-              ></p>
               <button
                 id="send-another-request"
                 type="button"
@@ -623,11 +562,6 @@
       const sendAnotherRequest = document.getElementById(
         "send-another-request",
       );
-      const imageAttachmentReminder = document.getElementById(
-        "image-attachment-reminder",
-      );
-      const imageInput = document.getElementById("reference-image");
-      const imageName = document.getElementById("reference-image-name");
       const whatsappNumber = "252638833011";
 
       function isMenuOpen() {
@@ -716,19 +650,10 @@
         { passive: true },
       );
 
-      imageInput.addEventListener("change", () => {
-        const file = imageInput.files?.[0];
-        imageName.textContent = file ? file.name : "JPG, PNG, ama WEBP";
-      });
-
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const data = new FormData(form);
         const value = (key) => data.get(key)?.toString().trim() || "-";
-        const imageFile = imageInput.files?.[0]?.name || "";
-        const imageNote = imageFile
-          ? `Sawir la doortay: ${imageFile}\nFiiro gaar ah: fadlan sawirka gacanta ugu lifaaq WhatsApp-ka.`
-          : "Sawir lama dooran.";
 
         const message = [
           "Adna Dhiso - Codsi cusub",
@@ -741,8 +666,6 @@
           `Waqtiga bilowga: ${value("timeline")}`,
           `Budget / qiyaas: ${value("budget")}`,
           `Faahfaahin: ${value("details")}`,
-          "",
-          imageNote,
         ].join("\n");
 
         window.open(
@@ -753,22 +676,12 @@
 
         form.classList.add("hidden");
         confirmation.classList.remove("hidden");
-        if (imageFile) {
-          imageAttachmentReminder.textContent = `Waxaad dooratay "${imageFile}". Fadlan sawirka gacanta ugu lifaaq WhatsApp-ka marka uu furmo.`;
-          imageAttachmentReminder.classList.remove("hidden");
-        } else {
-          imageAttachmentReminder.classList.add("hidden");
-          imageAttachmentReminder.textContent = "";
-        }
         confirmation.focus({ preventScroll: true });
         confirmation.scrollIntoView({ behavior: "smooth", block: "start" });
       });
 
       sendAnotherRequest.addEventListener("click", () => {
         form.reset();
-        imageName.textContent = "Naqshadda ama sawirka jagada ku dar";
-        imageAttachmentReminder.classList.add("hidden");
-        imageAttachmentReminder.textContent = "";
         confirmation.classList.add("hidden");
         form.classList.remove("hidden");
         form.scrollIntoView({ behavior: "smooth", block: "start" });
