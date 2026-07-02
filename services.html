@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services - Hoobaan Construction Company</title>
+    <title>Hoobaan Construction Company - Services</title>
     <link
       rel="icon"
       type="image/png"
@@ -46,6 +46,17 @@
     <style>
       body {
         font-family: "Inter", sans-serif;
+      }
+
+      #back-to-top .back-to-top-tooltip {
+        opacity: 0 !important;
+        transform: translateY(4px);
+      }
+
+      #back-to-top:hover .back-to-top-tooltip,
+      #back-to-top:focus-visible .back-to-top-tooltip {
+        opacity: 1 !important;
+        transform: translateY(0);
       }
 
       .blueprint {
@@ -395,9 +406,50 @@
             </a>
           </nav>
           <div class="mt-auto pt-8">
+            <div class="mb-6">
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.22em] text-white/45"
+              >
+                Follow Us:
+              </p>
+              <div class="flex items-center gap-4">
+                <a
+                  href="https://www.facebook.com/Hoobaanconstructioncompany"
+                  aria-label="Facebook"
+                  class="flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white transition active:scale-95"
+                >
+                  <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24">
+                    <path
+                      d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://wa.me/252638833011"
+                  aria-label="WhatsApp"
+                  class="flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white transition active:scale-95"
+                >
+                  <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@hoobaan_construction_com?is_from_webapp=1&sender_device=pc"
+                  aria-label="TikTok"
+                  class="flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white transition active:scale-95"
+                >
+                  <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24">
+                    <path
+                      d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.27 1.76-.23.84-.16 1.74.28 2.48.48.81 1.37 1.39 2.28 1.47.99.07 2.03-.23 2.78-.89.47-.42.81-.99.92-1.61.12-1.39.03-2.79.05-4.19V0z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
             <a
               href="Home.html#contact"
-              onclick="toggleMenu()"
               class="block rounded-xl bg-brand-red px-6 py-4 text-center text-base font-black text-white shadow-[0_12px_24px_rgba(6,27,73,0.24)] transition active:scale-95"
             >
               Contact Us
@@ -408,13 +460,12 @@
       <div
         id="menu-overlay"
         class="fixed inset-0 z-[105] hidden bg-brand-navy/45 backdrop-blur-sm"
-        onclick="toggleMenu()"
       ></div>
     </nav>
 
     <main>
       <section
-        class="services-hero relative min-h-[112svh] overflow-hidden bg-brand-navy pt-16 sm:pt-20"
+        class="services-hero relative min-h-[100svh] overflow-hidden bg-brand-navy pt-16 sm:pt-20"
       >
         <img
           src="img/services photos/serviceHeroImage.jpg"
@@ -432,11 +483,10 @@
         ></div>
 
         <div
-          class="relative z-10 mx-auto flex min-h-[calc(112svh-6rem)] max-w-7xl flex-col justify-between px-6 pb-14 pt-5 sm:pt-6 lg:px-8 lg:pb-[5.5rem] lg:pt-4"
+          class="relative z-10 mx-auto min-h-[calc(100svh-6rem)] max-w-7xl px-6 pb-40 pt-5 sm:pb-44 sm:pt-6 lg:px-8 lg:pb-44 lg:pt-4"
         >
           <div class="max-w-3xl">
             <div class="flex items-center gap-4">
-              <span class="h-6 w-1 rounded-full bg-brand-red"></span>
               <p
                 class="text-sm font-black uppercase tracking-[0.2em] text-brand-red sm:text-[0.95rem]"
               >
@@ -458,16 +508,18 @@
             </p>
           </div>
 
-          <div class="hero-cta-actions flex flex-col gap-4 sm:flex-row">
+          <div
+            class="hero-cta-actions absolute bottom-20 left-6 right-6 flex flex-col gap-4 sm:bottom-20 sm:right-auto sm:flex-row lg:bottom-24 lg:left-8"
+          >
             <a
               href="#our-services"
-              class="inline-flex min-h-14 items-center justify-center rounded-xl bg-brand-red px-9 text-base font-black text-white shadow-[0_18px_36px_rgba(185,28,28,0.28)] transition hover:-translate-y-1 hover:bg-red-700"
+              class="inline-flex min-h-14 items-center justify-center rounded-xl bg-brand-red px-9 text-base font-black text-white shadow-[0_18px_36px_rgba(185,28,28,0.28)] hover:bg-red-700 sm:min-w-[15rem]"
             >
               Eeg Adeegyada
             </a>
             <a
               href="Home.html#contact"
-              class="inline-flex min-h-14 items-center justify-center rounded-xl border border-white/20 bg-white/8 px-9 text-base font-black text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/12"
+              class="inline-flex min-h-14 items-center justify-center rounded-xl border border-white/20 bg-white/8 px-9 text-base font-black text-white backdrop-blur hover:bg-white/12 sm:min-w-[16rem]"
             >
               Nala Soo Xidhiidh
             </a>
@@ -485,7 +537,6 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-3xl text-center">
             <div class="mx-auto flex w-fit items-center gap-4">
-              <span class="h-6 w-1 rounded-full bg-brand-red"></span>
               <p
                 class="text-sm font-black uppercase tracking-[0.18em] text-brand-red"
               >
@@ -497,7 +548,6 @@
             >
               Construction Services Built Around Your Needs
             </h2>
-            <div class="mx-auto mt-6 h-1 w-16 rounded-full bg-brand-red"></div>
             <p class="mt-6 text-lg leading-8 text-white/65">
               From residential buildings to infrastructure and engineering
               consultancy, Hoobaan Construction Company delivers reliable
@@ -507,7 +557,7 @@
 
           <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             <article
-              class="service-card reveal group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+              class="service-card reveal group order-3 flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
             >
               <div
                 class="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden border-b border-white/10 bg-brand-navy/50"
@@ -524,7 +574,7 @@
                 Residential Construction
               </h3>
               <div
-                class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                class="mt-4 h-0.5 w-10 rounded-full bg-white/15 transition-all duration-300 group-hover:w-16"
               ></div>
               <p class="mt-5 leading-7 text-white/65">
                 We build strong, modern, and comfortable residential spaces
@@ -555,7 +605,7 @@
             </article>
 
             <article
-              class="service-card reveal group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+              class="service-card reveal group order-4 flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
             >
               <div
                 class="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden border-b border-white/10 bg-brand-navy/50"
@@ -572,7 +622,7 @@
                 Commercial Construction
               </h3>
               <div
-                class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                class="mt-4 h-0.5 w-10 rounded-full bg-white/15 transition-all duration-300 group-hover:w-16"
               ></div>
               <p class="mt-5 leading-7 text-white/65">
                 We construct reliable and attractive commercial spaces that
@@ -603,7 +653,7 @@
             </article>
 
             <article
-              class="service-card reveal group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+              class="service-card reveal group order-5 flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
             >
               <div
                 class="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden border-b border-white/10 bg-brand-navy/50"
@@ -620,7 +670,7 @@
                 Institutional Construction
               </h3>
               <div
-                class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                class="mt-4 h-0.5 w-10 rounded-full bg-white/15 transition-all duration-300 group-hover:w-16"
               ></div>
               <p class="mt-5 leading-7 text-white/65">
                 We deliver safe and functional buildings for education,
@@ -655,7 +705,7 @@
             </article>
 
             <article
-              class="service-card reveal group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+              class="service-card reveal group order-6 flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
             >
               <div
                 class="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden border-b border-white/10 bg-brand-navy/50"
@@ -672,7 +722,7 @@
                 Infrastructure & Civil Works
               </h3>
               <div
-                class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                class="mt-4 h-0.5 w-10 rounded-full bg-white/15 transition-all duration-300 group-hover:w-16"
               ></div>
               <p class="mt-5 leading-7 text-white/65">
                 We support communities with essential infrastructure and civil
@@ -707,7 +757,7 @@
             </article>
 
             <article
-              class="service-card reveal group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+              class="service-card reveal group order-2 flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
             >
               <div
                 class="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden border-b border-white/10 bg-brand-navy/50"
@@ -724,7 +774,7 @@
                 Exterior & Interior Design
               </h3>
               <div
-                class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                class="mt-4 h-0.5 w-10 rounded-full bg-white/15 transition-all duration-300 group-hover:w-16"
               ></div>
               <p class="mt-5 leading-7 text-white/65">
                 We create beautiful, practical, and modern interior and exterior
@@ -755,13 +805,13 @@
             </article>
 
             <article
-              class="service-card reveal group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+              class="service-card reveal group order-1 flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[0_22px_55px_rgba(0,0,0,0.2)] backdrop-blur-xl"
             >
               <div
                 class="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden border-b border-white/10 bg-brand-navy/50"
               >
                 <img
-                  src="img/services photos/serviceCard Images/consultation image 23.jpg"
+                  src="img/services photos/serviceCard Images/Ways To Prevent Slowdowns During Commercial Remodeling _https___www_sayeducate.jpg"
                   alt="Engineering blueprint and planning tools"
                   loading="lazy"
                   decoding="async"
@@ -772,7 +822,7 @@
                 Engineering & Consultancy
               </h3>
               <div
-                class="mt-4 h-0.5 w-10 rounded-full bg-brand-red transition-all duration-300 group-hover:w-20"
+                class="mt-4 h-0.5 w-10 rounded-full bg-white/15 transition-all duration-300 group-hover:w-16"
               ></div>
               <p class="mt-5 leading-7 text-white/65">
                 We provide professional engineering, planning, and supervision
@@ -830,7 +880,6 @@
         >
           <div class="why-copy max-w-xl">
             <div class="flex items-center gap-4">
-              <span class="h-5 w-px bg-brand-red"></span>
               <p
                 class="text-sm font-black uppercase tracking-[0.22em] text-brand-red"
               >
@@ -872,7 +921,7 @@
                   />
                 </svg>
               </span>
-              <div class="mt-5 h-1 w-12 rounded-full bg-brand-red"></div>
+              <div class="mt-5 h-1 w-12 rounded-full bg-white/15"></div>
               <h3 class="mt-4 text-2xl font-black text-white">Amaanada</h3>
               <div class="mt-4 h-px w-full bg-white/35"></div>
               <p class="mt-3 text-sm leading-6 text-white/76">
@@ -913,7 +962,7 @@
                   />
                 </svg>
               </span>
-              <div class="mt-5 h-1 w-12 rounded-full bg-brand-red"></div>
+              <div class="mt-5 h-1 w-12 rounded-full bg-white/15"></div>
               <h3 class="mt-4 text-2xl font-black text-white">Waqti Ilaalin</h3>
               <div class="mt-4 h-px w-full bg-white/35"></div>
               <p class="mt-3 text-sm leading-6 text-white/78">
@@ -942,7 +991,7 @@
                   />
                 </svg>
               </span>
-              <div class="mt-5 h-1 w-12 rounded-full bg-brand-red"></div>
+              <div class="mt-5 h-1 w-12 rounded-full bg-white/15"></div>
               <h3 class="mt-4 text-2xl font-black text-white">Khibrad Sare</h3>
               <div class="mt-4 h-px w-full bg-white/35"></div>
               <p class="mt-3 text-sm leading-6 text-white/76">
@@ -991,9 +1040,6 @@
           class="pointer-events-none absolute left-[24.4%] top-0 hidden h-full w-px -skew-x-[14deg] bg-sky-400/50 shadow-[0_0_22px_rgba(56,189,248,0.62)] lg:block"
         ></div>
         <div
-          class="pointer-events-none absolute right-[24.6%] top-0 hidden h-full w-px -skew-x-[14deg] bg-brand-red/70 shadow-[0_0_24px_rgba(227,30,36,0.72)] lg:block"
-        ></div>
-        <div
           class="pointer-events-none absolute right-[27%] top-[27%] hidden h-36 w-56 bg-[radial-gradient(circle,rgba(255,255,255,0.23)_1px,transparent_1.5px)] bg-[size:18px_18px] opacity-18 lg:block"
         ></div>
         <div
@@ -1012,7 +1058,7 @@
             Start Your Project
           </p>
           <svg
-            class="mx-auto mt-7 h-4 w-36 text-brand-red"
+            class="mx-auto mt-7 h-4 w-36 text-white/25"
             viewBox="0 0 144 16"
             fill="none"
             aria-hidden="true"
@@ -1086,6 +1132,34 @@
       </section>
     </main>
 
+    <button
+      id="back-to-top"
+      type="button"
+      class="group fixed bottom-24 right-5 z-[95] flex h-12 w-12 translate-y-4 items-center justify-center rounded-full border border-white/20 bg-brand-red text-white opacity-0 shadow-[0_18px_38px_rgba(6,27,73,0.28)] transition duration-300 hover:bg-[#991b1b] focus:outline-none focus:ring-2 focus:ring-white/70 sm:bottom-24 sm:right-7"
+      aria-label="Back to top"
+      title="Back to top"
+    >
+      <span
+        class="back-to-top-tooltip pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-md bg-white px-2.5 py-1 text-xs font-black text-brand-navy opacity-0 shadow-lg transition duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+      >
+        Back to top
+      </span>
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </button>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
@@ -1094,17 +1168,98 @@
       const overlay = document.getElementById("menu-overlay");
       const hamburger = document.getElementById("hamburger-icon");
       const closeIcon = document.getElementById("close-icon");
+      const links = document.querySelectorAll("#mobile-menu a");
+
+      function isMenuOpen() {
+        return !menu.classList.contains("-translate-x-full");
+      }
+
+      function openMenu() {
+        menu.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+        if (hamburger) hamburger.classList.add("hidden");
+        if (closeIcon) closeIcon.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeMenu() {
+        menu.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+        if (hamburger) hamburger.classList.remove("hidden");
+        if (closeIcon) closeIcon.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      }
 
       function toggleMenu() {
-        menu.classList.toggle("-translate-x-full");
-        overlay.classList.toggle("hidden");
-        if (hamburger) hamburger.classList.toggle("hidden");
-        if (closeIcon) closeIcon.classList.toggle("hidden");
-        document.body.classList.toggle("overflow-hidden");
+        isMenuOpen() ? closeMenu() : openMenu();
       }
 
       if (btn) btn.addEventListener("click", toggleMenu);
-      if (overlay) overlay.addEventListener("click", toggleMenu);
+      if (overlay) overlay.addEventListener("click", closeMenu);
+
+      links.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+
+      function handleSwipeGesture(startX, startY, endX, endY) {
+        const deltaX = endX - startX;
+        const deltaY = Math.abs(endY - startY);
+        const minSwipe = 45;
+        const edgeStart = 34;
+
+        if (deltaY > 70 || Math.abs(deltaX) < minSwipe) return;
+        if (!isMenuOpen() && startX <= edgeStart && deltaX > 0) openMenu();
+        if (isMenuOpen() && deltaX < 0) closeMenu();
+      }
+
+      document.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "touchend",
+        (e) => {
+          handleSwipeGesture(
+            touchStartX,
+            touchStartY,
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY,
+          );
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          pointerStartX = e.clientX;
+          pointerStartY = e.clientY;
+        },
+        { passive: true },
+      );
+
+      document.addEventListener(
+        "pointerup",
+        (e) => {
+          handleSwipeGesture(
+            pointerStartX,
+            pointerStartY,
+            e.clientX,
+            e.clientY,
+          );
+        },
+        { passive: true },
+      );
 
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
@@ -1113,7 +1268,7 @@
       if (window.gsap && !reduceMotion) {
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.from("nav > div", {
+        gsap.from("body > nav > div:first-child", {
           y: -24,
           opacity: 0,
           duration: 0.75,
@@ -1134,26 +1289,6 @@
           delay: 0.15,
           ease: "power3.out",
         });
-
-        gsap.fromTo(
-          ".hero-cta-actions",
-          {
-            y: 36,
-            opacity: 0,
-          },
-          {
-            scrollTrigger: {
-              trigger: ".services-hero",
-              start: "top+=260 top",
-              end: "bottom 72%",
-              toggleActions: "play none none reverse",
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: "power3.out",
-          },
-        );
 
         gsap.from("#our-services .mx-auto.max-w-3xl > *", {
           scrollTrigger: {
@@ -1250,6 +1385,30 @@
           delay: 0.1,
           ease: "power3.out",
         });
+      }
+
+      const backToTopBtn = document.getElementById("back-to-top");
+
+      function toggleBackToTop() {
+        const distanceFromBottom =
+          document.documentElement.scrollHeight -
+          (window.scrollY + window.innerHeight);
+        const isVisible = distanceFromBottom < 360;
+        backToTopBtn.classList.toggle("opacity-0", !isVisible);
+        backToTopBtn.classList.toggle("pointer-events-none", !isVisible);
+        backToTopBtn.classList.toggle("translate-y-4", !isVisible);
+      }
+
+      if (backToTopBtn) {
+        backToTopBtn.classList.add("pointer-events-none");
+        window.addEventListener("scroll", toggleBackToTop, { passive: true });
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
+        });
+        toggleBackToTop();
       }
     </script>
   </body>
