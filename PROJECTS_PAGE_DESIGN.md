@@ -54,7 +54,7 @@ It contains:
 - Logo image from `img/HomePage_photos/companyLogo.jpg`.
 - Desktop links: Home, About, Services, Projects.
 - Active Projects state with red text and a red underline.
-- Desktop Contact Us button linking to `Home.html#contact`.
+- Desktop Contact Us button linking to `index.html#contact`.
 - Mobile menu button with hamburger and close icons.
 - Slide-in mobile menu with the same page links and Contact Us button.
 - Overlay layer that closes the mobile menu when clicked.

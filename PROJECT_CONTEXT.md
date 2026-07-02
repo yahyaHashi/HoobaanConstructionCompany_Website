@@ -61,7 +61,7 @@ Important Projects page rules:
 
 All four main pages now use the About page navbar sizing/style:
 
-- `Home.html`
+- `index.html`
 - `about.html`
 - `services.html`
 - `Projects.html`

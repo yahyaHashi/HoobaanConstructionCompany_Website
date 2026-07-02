@@ -5,7 +5,7 @@ Static website for Hoobaan Construction Company, built with HTML, Tailwind CDN, 
 ## Pages
 
 - `index.html` redirects to the home page.
-- `Home.html` is the landing page.
+- `index.html` is the landing page.
 - `about.html` introduces the company and team.
 - `services.html` lists construction services.
 - `Projects.html` showcases completed projects, 3D visuals, interiors, and video.
