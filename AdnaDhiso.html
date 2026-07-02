@@ -380,8 +380,7 @@
                     autocomplete="tel"
                     pattern="063[0-9]{7}"
                     maxlength="10"
-                    placeholder="0631234567"
-                    title="Telefoonku waa inuu noqdaa 063 iyo 7 lambar oo ka dambeeya"
+                    value="063"
                     required
                   />
                 </label>
@@ -563,11 +562,20 @@
       const hamburgerIcon = document.getElementById("hamburger-icon");
       const closeIcon = document.getElementById("close-icon");
       const form = document.getElementById("build-request-form");
+      const phoneInput = form.elements.phone;
       const confirmation = document.getElementById("request-confirmation");
       const sendAnotherRequest = document.getElementById(
         "send-another-request",
       );
       const whatsappNumber = "252638833011";
+
+      function formatPhoneInput() {
+        const digits = phoneInput.value.replace(/\D/g, "");
+        const suffix = digits.startsWith("063")
+          ? digits.slice(3)
+          : digits.replace(/^0+/, "");
+        phoneInput.value = `063${suffix.slice(0, 7)}`;
+      }
 
       function isMenuOpen() {
         return !mobileMenu.classList.contains("-translate-x-full");
@@ -655,11 +663,14 @@
         { passive: true },
       );
 
+      phoneInput.addEventListener("input", formatPhoneInput);
+      phoneInput.addEventListener("focus", formatPhoneInput);
+
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const data = new FormData(form);
         const value = (key) => data.get(key)?.toString().trim() || "-";
-        const phoneInput = form.elements.phone;
+        formatPhoneInput();
         const phone = phoneInput.value.trim();
 
         if (!/^063\d{7}$/.test(phone)) {
