@@ -1545,8 +1545,19 @@
         pendingFlipCard = null;
       }
 
+      function resetInactiveFlipCards(activeCard = null) {
+        document.querySelectorAll(".project-flip-card").forEach((item) => {
+          if (item === activeCard) return;
+          item.classList.remove("is-flipped");
+          item.setAttribute("aria-pressed", "false");
+        });
+      }
+
       function scheduleFlipCard(card, { requireVisible = false } = {}) {
-        if (!card || card === pendingFlipCard) return;
+        if (!card) return;
+
+        resetInactiveFlipCards(card);
+        if (card === pendingFlipCard) return;
 
         clearPendingFlip();
         pendingFlipCard = card;
