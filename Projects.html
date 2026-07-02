@@ -258,6 +258,10 @@
       }
 
       @media (hover: hover) and (pointer: fine) {
+        .project-flip-card:hover .project-flip-inner {
+          transform: rotateY(180deg) translateZ(0);
+        }
+
         .project-flip-card:hover img,
         .project-marquee-card:hover img {
           transform: scale(1.07);
@@ -1522,7 +1526,7 @@
         document.body.classList.remove("overflow-hidden");
       }
 
-      const flipActivationDelay = 1200;
+      const flipActivationDelay = 1000;
       let pendingFlipCard = null;
       let pendingFlipTimer = 0;
 
