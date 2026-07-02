@@ -502,6 +502,12 @@
                         >
                           Naqshadda ama sawirka jagada ku dar
                         </span>
+                        <span
+                          class="mt-2 block text-xs font-semibold leading-5 text-white/42"
+                        >
+                          Sawirka WhatsApp si automatic ah uma raaco; marka
+                          WhatsApp furmo gacanta ku lifaaq.
+                        </span>
                       </span>
                     </span>
                     <span
@@ -518,7 +524,7 @@
               >
                 <p class="max-w-md text-sm leading-6 text-white/50">
                   Marka aad dirto, fariin diyaarsan ayaa WhatsApp ugu furmaysa
-                  kooxda Hoobaan.
+                  kooxda Hoobaan. Sawir kasta gacanta WhatsApp ugu lifaaq.
                 </p>
                 <button
                   type="submit"
@@ -572,6 +578,10 @@
                 Wuu nasoo gaadhay codsigaagu. Kooxda Hoobaan Construction
                 Company way kula soo xidhiidhi doontaa sida ugu dhakhsaha badan.
               </p>
+              <p
+                id="image-attachment-reminder"
+                class="mx-auto mt-4 hidden max-w-xl rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-sm font-bold leading-6 text-white/70"
+              ></p>
               <button
                 id="send-another-request"
                 type="button"
@@ -612,6 +622,9 @@
       const confirmation = document.getElementById("request-confirmation");
       const sendAnotherRequest = document.getElementById(
         "send-another-request",
+      );
+      const imageAttachmentReminder = document.getElementById(
+        "image-attachment-reminder",
       );
       const imageInput = document.getElementById("reference-image");
       const imageName = document.getElementById("reference-image-name");
@@ -712,7 +725,10 @@
         event.preventDefault();
         const data = new FormData(form);
         const value = (key) => data.get(key)?.toString().trim() || "-";
-        const imageFile = imageInput.files?.[0]?.name || "Sawir lama dooran";
+        const imageFile = imageInput.files?.[0]?.name || "";
+        const imageNote = imageFile
+          ? `Sawir la doortay: ${imageFile}\nFiiro gaar ah: fadlan sawirka gacanta ugu lifaaq WhatsApp-ka.`
+          : "Sawir lama dooran.";
 
         const message = [
           "Adna Dhiso - Codsi cusub",
@@ -726,7 +742,7 @@
           `Budget / qiyaas: ${value("budget")}`,
           `Faahfaahin: ${value("details")}`,
           "",
-          `Naqshad / sawirka jagada: ${imageFile}`,
+          imageNote,
         ].join("\n");
 
         window.open(
@@ -737,6 +753,13 @@
 
         form.classList.add("hidden");
         confirmation.classList.remove("hidden");
+        if (imageFile) {
+          imageAttachmentReminder.textContent = `Waxaad dooratay "${imageFile}". Fadlan sawirka gacanta ugu lifaaq WhatsApp-ka marka uu furmo.`;
+          imageAttachmentReminder.classList.remove("hidden");
+        } else {
+          imageAttachmentReminder.classList.add("hidden");
+          imageAttachmentReminder.textContent = "";
+        }
         confirmation.focus({ preventScroll: true });
         confirmation.scrollIntoView({ behavior: "smooth", block: "start" });
       });
@@ -744,6 +767,8 @@
       sendAnotherRequest.addEventListener("click", () => {
         form.reset();
         imageName.textContent = "Naqshadda ama sawirka jagada ku dar";
+        imageAttachmentReminder.classList.add("hidden");
+        imageAttachmentReminder.textContent = "";
         confirmation.classList.add("hidden");
         form.classList.remove("hidden");
         form.scrollIntoView({ behavior: "smooth", block: "start" });
