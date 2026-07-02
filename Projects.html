@@ -258,10 +258,6 @@
       }
 
       @media (hover: hover) and (pointer: fine) {
-        .project-flip-card:hover .project-flip-inner {
-          transform: rotateY(180deg) translateZ(0);
-        }
-
         .project-flip-card:hover img,
         .project-marquee-card:hover img {
           transform: scale(1.07);
@@ -1526,7 +1522,42 @@
         document.body.classList.remove("overflow-hidden");
       }
 
+      const flipActivationDelay = 1200;
+      let pendingFlipCard = null;
+      let pendingFlipTimer = 0;
+
+      function isCardMeaningfullyVisible(card) {
+        const rect = card.getBoundingClientRect();
+        const visibleHeight =
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+        return visibleHeight > Math.min(rect.height * 0.38, 180);
+      }
+
+      function clearPendingFlip(card = null) {
+        if (card && pendingFlipCard !== card) return;
+        if (pendingFlipTimer) window.clearTimeout(pendingFlipTimer);
+        pendingFlipTimer = 0;
+        pendingFlipCard = null;
+      }
+
+      function scheduleFlipCard(card, { requireVisible = false } = {}) {
+        if (!card || card === pendingFlipCard) return;
+
+        clearPendingFlip();
+        pendingFlipCard = card;
+        pendingFlipTimer = window.setTimeout(() => {
+          const shouldActivate =
+            pendingFlipCard === card &&
+            (!requireVisible || isCardMeaningfullyVisible(card));
+
+          clearPendingFlip(card);
+          if (shouldActivate) activateFlipCard(card);
+        }, flipActivationDelay);
+      }
+
       function activateFlipCard(card) {
+        clearPendingFlip(card);
         document.querySelectorAll(".project-flip-card").forEach((item) => {
           const isCurrent = item === card;
           item.classList.toggle("is-flipped", isCurrent);
@@ -1543,14 +1574,9 @@
         let closestDistance = Infinity;
 
         cards.forEach((card) => {
+          if (!isCardMeaningfullyVisible(card)) return;
+
           const rect = card.getBoundingClientRect();
-          const visibleHeight =
-            Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-          const isMeaningfullyVisible =
-            visibleHeight > Math.min(rect.height * 0.38, 180);
-
-          if (!isMeaningfullyVisible) return;
-
           const cardCenter = rect.top + rect.height / 2;
           const distance = Math.abs(cardCenter - viewportCenter);
 
@@ -1560,7 +1586,7 @@
           }
         });
 
-        if (closestCard) activateFlipCard(closestCard);
+        if (closestCard) scheduleFlipCard(closestCard, { requireVisible: true });
       }
 
       function setupMobileFlipActivation() {
@@ -1640,11 +1666,9 @@
             openLightbox("image", src, detail.title);
           });
 
-          card.addEventListener("pointerenter", () => activateFlipCard(card));
+          card.addEventListener("pointerenter", () => scheduleFlipCard(card));
+          card.addEventListener("pointerleave", () => clearPendingFlip(card));
           card.addEventListener("click", () => activateFlipCard(card));
-          card.addEventListener("touchstart", () => activateFlipCard(card), {
-            passive: true,
-          });
           card.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
               event.preventDefault();
