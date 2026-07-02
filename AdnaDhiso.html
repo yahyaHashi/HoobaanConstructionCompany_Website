@@ -376,7 +376,12 @@
                     class="form-field"
                     type="tel"
                     name="phone"
-                    placeholder="063..."
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    pattern="063[0-9]{7}"
+                    maxlength="10"
+                    placeholder="0631234567"
+                    title="Telefoonku waa inuu noqdaa 063 iyo 7 lambar oo ka dambeeya"
                     required
                   />
                 </label>
@@ -654,6 +659,17 @@
         event.preventDefault();
         const data = new FormData(form);
         const value = (key) => data.get(key)?.toString().trim() || "-";
+        const phoneInput = form.elements.phone;
+        const phone = phoneInput.value.trim();
+
+        if (!/^063\d{7}$/.test(phone)) {
+          phoneInput.setCustomValidity(
+            "Telefoonku waa inuu noqdaa 063 iyo 7 lambar oo ka dambeeya.",
+          );
+          phoneInput.reportValidity();
+          phoneInput.setCustomValidity("");
+          return;
+        }
 
         const message = [
           "Adna Dhiso - Codsi cusub",
