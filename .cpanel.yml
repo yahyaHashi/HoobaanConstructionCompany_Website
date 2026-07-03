@@ -3,5 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/hoobxwko/public_html/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -f index.html about.html services.html Projects.html AdnaDhiso.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
+    - /bin/cp -f index.html about.html services.html Projects.html AdnaDhiso.html robots.txt sitemap.xml .htaccess googled81049e85dc3ae38.html $DEPLOYPATH
     - /bin/cp -Rf img $DEPLOYPATH
