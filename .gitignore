@@ -11,6 +11,14 @@
 *.tmp
 *.temp
 
+# Local secrets and environment files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
 # Dependency folders, if tooling is added later
 node_modules/
 
@@ -18,4 +26,3 @@ node_modules/
 dist/
 build/
 .netlify/
-
