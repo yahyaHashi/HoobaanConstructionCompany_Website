@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\.hoobaanconstruction\.com$ [NC]
+RewriteRule ^(.*)$ https://www.hoobaanconstruction.com/$1 [R=301,L]
+
+DirectoryIndex index.html

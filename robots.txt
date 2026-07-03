@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hoobaanconstruction.com/sitemap.xml
+Sitemap: https://www.hoobaanconstruction.com/sitemap.xml
