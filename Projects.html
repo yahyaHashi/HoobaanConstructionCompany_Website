@@ -391,9 +391,18 @@
         border-radius: 999px;
       }
 
-      .lightbox-media img,
-      .lightbox-media video {
+      .lightbox-media img {
         max-height: min(78vh, 850px);
+      }
+
+      .lightbox-media video {
+        max-height: min(92dvh, 900px);
+      }
+
+      @media (max-height: 480px) and (orientation: landscape) {
+        #lightbox-caption {
+          display: none;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1188,7 +1197,7 @@
 
     <div
       id="lightbox"
-      class="fixed inset-0 z-[200] hidden items-center justify-center bg-[#020916]/92 p-4 backdrop-blur-md"
+      class="fixed inset-0 z-[200] hidden items-center justify-center bg-[#020916]/92 p-2 backdrop-blur-md sm:p-4"
       aria-hidden="true"
     >
       <button
@@ -1211,7 +1220,7 @@
           />
         </svg>
       </button>
-      <div class="lightbox-media w-full max-w-6xl">
+      <div class="lightbox-media w-full max-w-[96vw]">
         <img
           id="lightbox-img"
           src=""
@@ -1221,9 +1230,8 @@
         <video
           id="lightbox-video"
           src=""
-          class="mx-auto hidden aspect-video max-h-[82dvh] w-full rounded-2xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+          class="mx-auto hidden aspect-video max-h-[92dvh] w-full max-w-[min(96vw,calc(92dvh*16/9))] rounded-xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.45)] sm:rounded-2xl"
           controls
-          playsinline
           preload="auto"
         ></video>
         <p
@@ -1540,6 +1548,45 @@
         }
       }
 
+      function requestLandscapePlayback(videoElement) {
+        if (
+          document.fullscreenElement === videoElement ||
+          document.webkitFullscreenElement === videoElement
+        ) {
+          return;
+        }
+
+        const lockLandscape = () => {
+          if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock("landscape").catch(() => {});
+          }
+        };
+        const requestFullscreen =
+          videoElement.requestFullscreen ||
+          videoElement.webkitRequestFullscreen ||
+          videoElement.msRequestFullscreen;
+
+        if (requestFullscreen) {
+          const fullscreenRequest = requestFullscreen.call(videoElement);
+          if (
+            fullscreenRequest &&
+            typeof fullscreenRequest.then === "function"
+          ) {
+            fullscreenRequest.then(lockLandscape).catch(() => {});
+          } else {
+            lockLandscape();
+          }
+          return;
+        }
+
+        if (videoElement.webkitEnterFullscreen) {
+          try {
+            videoElement.webkitEnterFullscreen();
+          } catch (error) {}
+        }
+        lockLandscape();
+      }
+
       function openLightbox(type, src, title) {
         lightboxImg.classList.add("hidden");
         lightboxVideo.classList.add("hidden");
@@ -1562,6 +1609,7 @@
           });
           lightboxVideo.load();
           playLightboxVideo();
+          requestLandscapePlayback(lightboxVideo);
         } else {
           lightboxImg.src = src;
           lightboxImg.alt = title;
@@ -1581,6 +1629,14 @@
         lightboxImg.removeAttribute("src");
         document.body.classList.remove("overflow-hidden");
       }
+
+      lightboxVideo.addEventListener("click", () => {
+        requestLandscapePlayback(lightboxVideo);
+      });
+
+      lightboxVideo.addEventListener("play", () => {
+        requestLandscapePlayback(lightboxVideo);
+      });
 
       const flipActivationDelay = 1000;
       let pendingFlipCard = null;

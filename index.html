@@ -247,6 +247,12 @@
         }
       }
 
+      @media (max-height: 480px) and (orientation: landscape) {
+        #modal-video-caption {
+          display: none;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -882,7 +888,7 @@
 
     <div
       id="video-modal"
-      class="fixed inset-0 z-[220] hidden items-center justify-center bg-[#020916]/94 p-4 backdrop-blur-md"
+      class="fixed inset-0 z-[220] hidden items-center justify-center bg-[#020916]/94 p-2 backdrop-blur-md sm:p-4"
       aria-hidden="true"
     >
       <button
@@ -905,12 +911,11 @@
           />
         </svg>
       </button>
-      <div class="w-full max-w-6xl">
+      <div class="w-full max-w-[96vw]">
         <video
           id="modal-video"
-          class="mx-auto aspect-video max-h-[82dvh] w-full rounded-2xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.5)]"
+          class="mx-auto aspect-video max-h-[92dvh] w-full max-w-[min(96vw,calc(92dvh*16/9))] rounded-xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.5)] sm:rounded-2xl"
           controls
-          playsinline
           preload="auto"
         ></video>
         <p
@@ -946,6 +951,45 @@
         }
       }
 
+      function requestLandscapePlayback(videoElement) {
+        if (
+          document.fullscreenElement === videoElement ||
+          document.webkitFullscreenElement === videoElement
+        ) {
+          return;
+        }
+
+        const lockLandscape = () => {
+          if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock("landscape").catch(() => {});
+          }
+        };
+        const requestFullscreen =
+          videoElement.requestFullscreen ||
+          videoElement.webkitRequestFullscreen ||
+          videoElement.msRequestFullscreen;
+
+        if (requestFullscreen) {
+          const fullscreenRequest = requestFullscreen.call(videoElement);
+          if (
+            fullscreenRequest &&
+            typeof fullscreenRequest.then === "function"
+          ) {
+            fullscreenRequest.then(lockLandscape).catch(() => {});
+          } else {
+            lockLandscape();
+          }
+          return;
+        }
+
+        if (videoElement.webkitEnterFullscreen) {
+          try {
+            videoElement.webkitEnterFullscreen();
+          } catch (error) {}
+        }
+        lockLandscape();
+      }
+
       function openVideoModal(src, title, modalStopTime) {
         modalVideo.src = src;
         modalVideo.poster = "img/team photos/Video thumnail.jpg";
@@ -959,6 +1003,7 @@
         modalVideo.addEventListener("canplay", startModalVideo, { once: true });
         modalVideo.load();
         startModalVideo();
+        requestLandscapePlayback(modalVideo);
       }
 
       function closeVideoModal() {
@@ -973,6 +1018,14 @@
         modalVideoCaption.textContent = "";
         document.body.classList.remove("overflow-hidden");
       }
+
+      modalVideo.addEventListener("click", () => {
+        requestLandscapePlayback(modalVideo);
+      });
+
+      modalVideo.addEventListener("play", () => {
+        requestLandscapePlayback(modalVideo);
+      });
 
       modalVideo.addEventListener("timeupdate", function () {
         const modalStopTime = Number(this.dataset.stopTime);
