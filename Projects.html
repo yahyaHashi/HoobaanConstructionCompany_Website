@@ -85,7 +85,6 @@
     <style>
       body {
         font-family: "Inter", sans-serif;
-        overflow-x: hidden;
       }
 
       #back-to-top .back-to-top-tooltip {
@@ -195,7 +194,6 @@
         display: grid;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         gap: 1rem;
-        width: 100%;
       }
 
       @media (min-width: 768px) {
@@ -310,35 +308,38 @@
       }
 
       .project-marquee-window {
-        overflow: visible;
+        overflow: hidden;
         border-radius: 1.25rem;
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          black 8%,
+          black 92%,
+          transparent
+        );
       }
 
       .project-marquee-track {
-        display: grid;
-        width: 100%;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
+        display: flex;
+        width: max-content;
         gap: 1rem;
-        animation: none;
+        animation: projectMarquee var(--marquee-duration, 74s) linear infinite;
       }
 
-      @media (min-width: 768px) {
-        .project-marquee-track {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+      .project-marquee-window:hover .project-marquee-track {
+        animation-play-state: paused;
       }
 
-      @media (min-width: 1280px) {
-        .project-marquee-track {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
+      .project-marquee-track.is-reverse {
+        animation-name: projectMarqueeReverse;
       }
 
       .project-marquee-card {
         position: relative;
         isolation: isolate;
         height: 17rem;
-        width: 100%;
+        width: min(78vw, 24rem);
+        flex: 0 0 auto;
         overflow: hidden;
         border-radius: 1rem;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -349,6 +350,7 @@
       @media (min-width: 1024px) {
         .project-marquee-card {
           height: 18rem;
+          width: 29rem;
         }
       }
 
@@ -695,7 +697,7 @@
           class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(185,28,28,0.13),transparent_30%),linear-gradient(180deg,rgba(4,17,38,0.22),rgba(4,17,38,0.72))]"
         ></div>
         <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="max-w-4xl">
+          <div class="max-w-3xl">
             <div class="flex items-center gap-4">
               <p
                 class="text-sm font-black uppercase tracking-[0.22em] text-brand-red"
@@ -757,7 +759,7 @@
         ></div>
         <div class="dot-grid pointer-events-none absolute inset-0 opacity-[0.08]"></div>
 
-        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="relative z-10 ml-0 mr-auto max-w-7xl px-6 lg:px-8">
           <div class="max-w-3xl">
             <div class="flex items-center gap-4">
               <p
@@ -771,7 +773,7 @@
             >
               Our Projects
             </h2>
-            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/64">
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/64">
               Daawo dhismayaasha ay shirkadda Hoobaan dhisto, laga bilaabo
               naqshad qurux badan ilaa dhamaystir tayo leh oo lagu faani karo.
             </p>
@@ -882,18 +884,18 @@
       ></div>
       <div class="dot-grid pointer-events-none absolute inset-0 opacity-[0.045]"></div>
 
-      <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="relative z-10 ml-0 mr-auto max-w-7xl px-6 lg:px-8">
         <div
-          class="mb-16 grid gap-8 border-b border-white/10 pb-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-12"
+          class="mb-16 border-b border-white/10 pb-12 lg:flex lg:items-end lg:justify-between lg:gap-12"
         >
-          <div class="min-w-0 max-w-4xl">
+          <div class="max-w-3xl">
             <p
               class="text-xs font-black uppercase tracking-[0.24em] text-brand-red"
             >
               Build With Hoobaan
             </p>
             <h2
-              class="mt-5 max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl"
+              class="mt-5 text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl"
             >
               U dhiibo dhismaha gurigaaga mustaqbalka shirkadda Hoobaan.
             </h2>
@@ -1756,8 +1758,8 @@
         const group = projectImageGroups[key];
         if (!track || !group) return;
 
-        group.images.forEach((src, index) => {
-          const realIndex = index + 1;
+        [...group.images, ...group.images].forEach((src, index) => {
+          const realIndex = (index % group.images.length) + 1;
           const button = document.createElement("button");
           button.type = "button";
           button.className = "project-marquee-card";

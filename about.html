@@ -91,7 +91,6 @@
       body {
         font-family: "Inter", sans-serif;
         background: #061b49;
-        overflow-x: hidden;
       }
 
       #back-to-top .back-to-top-tooltip {
@@ -151,7 +150,6 @@
 
       .team-card {
         position: relative;
-        min-width: 0;
         transform: translateY(0) scale(1);
         transition:
           transform 0.32s ease,
@@ -167,7 +165,6 @@
 
       .process-card {
         position: relative;
-        min-width: 0;
         overflow: visible;
         background:
           radial-gradient(
@@ -498,7 +495,7 @@
         </div>
 
         <div
-          class="relative z-10 mx-auto grid min-h-[560px] max-w-[90rem] gap-8 px-6 pb-12 pt-10 lg:min-h-[calc(100svh-8.5rem)] lg:grid-cols-[0.86fr_1.14fr] lg:px-8 lg:pb-14"
+          class="relative z-10 mx-auto grid min-h-[560px] max-w-[90rem] gap-8 px-6 pb-12 pt-10 lg:grid-cols-[0.86fr_1.14fr] lg:px-8 lg:pb-14"
         >
           <div class="reveal relative z-20 max-w-[620px] self-center">
             <p
@@ -966,7 +963,7 @@
             </div>
           </div>
 
-          <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             <article
               class="team-card reveal group overflow-hidden rounded-2xl border border-brand-blue/25 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.26)]"
             >
@@ -1161,9 +1158,9 @@
             </p>
           </div>
 
-          <div class="relative mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
+          <div class="relative mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-5">
             <div
-              class="absolute left-[7%] right-[7%] top-[54%] hidden h-px -translate-y-1/2 bg-white/45 shadow-[0_0_18px_rgba(255,255,255,0.45)] 2xl:block"
+              class="absolute left-[7%] right-[7%] top-[54%] hidden h-px -translate-y-1/2 bg-white/45 shadow-[0_0_18px_rgba(255,255,255,0.45)] lg:block"
             ></div>
 
             <article
