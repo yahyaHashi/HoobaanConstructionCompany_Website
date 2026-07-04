@@ -69,7 +69,7 @@
               brand: {
                 navy: "#061E46",
                 blue: "#0A2C73",
-                red: "#B91C1C",
+                red: "#8B0F1D",
                 dark: "#041126",
                 soft: "#D6DEEA",
               },
@@ -627,7 +627,7 @@
 
     <main>
       <section
-        class="projects-hero relative min-h-[102svh] overflow-hidden bg-brand-dark pt-10 sm:pt-12"
+        class="projects-hero relative min-h-[100svh] overflow-hidden bg-brand-dark pt-8 sm:pt-12"
       >
         <img
           src="img/Projects_photos/Completed Projects/residential buildings.jpg"
@@ -648,7 +648,7 @@
         ></div>
 
         <div
-          class="relative z-10 mx-auto flex min-h-[calc(102svh-5rem)] max-w-[90rem] flex-col justify-between px-6 pb-24 pt-6 sm:pb-28 sm:pt-8 lg:px-8 lg:pb-32 lg:pt-10"
+          class="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] max-w-[90rem] flex-col justify-start gap-8 px-6 pb-8 pt-5 sm:min-h-[calc(100svh-5rem)] sm:justify-between sm:gap-0 sm:pb-28 sm:pt-8 lg:px-8 lg:pb-32 lg:pt-10"
         >
           <div class="max-w-4xl">
             <div class="flex items-center gap-4">
@@ -660,13 +660,13 @@
               </p>
             </div>
             <h1
-              class="mt-6 max-w-5xl text-5xl font-black leading-[1.03] tracking-[-0.035em] text-white sm:text-6xl lg:text-[4.6rem]"
+              class="mt-5 max-w-5xl text-4xl font-black leading-[1.03] tracking-[-0.035em] text-white sm:mt-6 sm:text-6xl lg:text-[4.6rem]"
             >
               Built Proof, Not Promises.
             </h1>
             <div class="mt-5 h-1 w-14 rounded-full bg-brand-red"></div>
             <p
-              class="mt-6 max-w-3xl text-xl font-semibold leading-9 text-white/80 sm:text-2xl sm:leading-[2.7rem]"
+              class="mt-5 max-w-3xl text-lg font-semibold leading-8 text-white/80 sm:mt-6 sm:text-2xl sm:leading-[2.7rem]"
             >
               Daawo mashaariic dhab ah, naqshado 3D ah, iyo interior designs ay
               Hoobaan Construction Company ku muujinayso tayada shaqadeeda.
@@ -675,13 +675,13 @@
           <div class="flex flex-col gap-3 sm:flex-row">
             <a
               href="#projects-gallery"
-              class="inline-flex items-center justify-center rounded-full bg-brand-red px-7 py-4 text-sm font-black uppercase tracking-[0.12em] text-white shadow-[0_18px_42px_rgba(185,28,28,0.28)] transition hover:bg-[#991b1b]"
+              class="inline-flex items-center justify-center rounded-full bg-brand-red px-7 py-3 text-sm font-black uppercase tracking-[0.12em] text-white shadow-[0_18px_42px_rgba(185,28,28,0.28)] transition hover:bg-[#991b1b] sm:py-4"
             >
               View Projects
             </a>
             <a
               href="#project-video"
-              class="inline-flex items-center justify-center rounded-full border border-white/24 bg-white/10 px-7 py-4 text-sm font-black uppercase tracking-[0.12em] text-white backdrop-blur transition hover:bg-white/16"
+              class="inline-flex items-center justify-center rounded-full border border-white/24 bg-white/10 px-7 py-3 text-sm font-black uppercase tracking-[0.12em] text-white backdrop-blur transition hover:bg-white/16 sm:py-4"
             >
               Watch Video
             </a>
@@ -774,8 +774,7 @@
               Our Projects
             </h2>
             <p class="mt-6 max-w-2xl text-lg leading-8 text-white/64">
-              Hoobaan Construction. Crafted spaces. Built with vision. Finished
-              with pride.
+              Daawo dhismayaasha ay shirkadda Hoobaan dhisto.
             </p>
           </div>
 
@@ -1224,6 +1223,7 @@
           class="mx-auto hidden aspect-video max-h-[82dvh] w-full rounded-2xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
           controls
           playsinline
+          preload="auto"
         ></video>
         <p
           id="lightbox-caption"
@@ -1530,29 +1530,42 @@
         },
       };
 
+      function playLightboxVideo() {
+        const playPromise = lightboxVideo.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {
+            lightboxVideo.controls = true;
+          });
+        }
+      }
+
       function openLightbox(type, src, title) {
         lightboxImg.classList.add("hidden");
         lightboxVideo.classList.add("hidden");
         lightboxVideo.pause();
         lightboxVideo.removeAttribute("src");
         lightbox.dataset.mediaType = type;
-
-        if (type === "video") {
-          lightboxVideo.src = src;
-          lightboxVideo.classList.remove("hidden");
-          lightboxVideo.load();
-          lightboxVideo.play().catch(() => {});
-        } else {
-          lightboxImg.src = src;
-          lightboxImg.alt = title;
-          lightboxImg.classList.remove("hidden");
-        }
-
         lightboxCaption.textContent = title;
         lightbox.classList.remove("hidden");
         lightbox.classList.add("flex");
         lightbox.setAttribute("aria-hidden", "false");
         document.body.classList.add("overflow-hidden");
+
+        if (type === "video") {
+          lightboxVideo.src = src;
+          lightboxVideo.poster = "img/Videos/Hobaan G+1-poster.jpg";
+          lightboxVideo.currentTime = 0;
+          lightboxVideo.classList.remove("hidden");
+          lightboxVideo.addEventListener("canplay", playLightboxVideo, {
+            once: true,
+          });
+          lightboxVideo.load();
+          playLightboxVideo();
+        } else {
+          lightboxImg.src = src;
+          lightboxImg.alt = title;
+          lightboxImg.classList.remove("hidden");
+        }
       }
 
       function closeLightbox() {
@@ -1560,7 +1573,10 @@
         lightbox.classList.remove("flex");
         lightbox.setAttribute("aria-hidden", "true");
         lightboxVideo.pause();
+        lightboxVideo.removeEventListener("canplay", playLightboxVideo);
         lightboxVideo.removeAttribute("src");
+        lightboxVideo.removeAttribute("poster");
+        lightboxVideo.load();
         lightboxImg.removeAttribute("src");
         document.body.classList.remove("overflow-hidden");
       }

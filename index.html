@@ -127,7 +127,7 @@
               brand: {
                 navy: "#061B49",
                 blue: "#00388D",
-                red: "#AA182C",
+                red: "#8B0F1D",
                 white: "#FFFFFF",
               },
             },
@@ -514,9 +514,9 @@
             class="text-5xl font-black leading-[0.98] tracking-normal text-white drop-shadow-2xl sm:text-7xl lg:text-8xl"
           >
             Building<br />
-            Your <span class="text-[#ff2638]">Vision</span>
+            Your <span class="text-brand-red">Vision</span>
           </h1>
-          <div class="mt-7 h-1 w-24 rounded-full bg-[#ff2638]"></div>
+          <div class="mt-7 h-1 w-24 rounded-full bg-brand-red"></div>
           <p class="mt-7 max-w-xl text-lg leading-8 text-white/90">
             Waxaan dhisnaa kaabayaal tayo leh, iyadoo la adeegsanayo khibrad,
             hal-abuur iyo kalsooni.
@@ -531,7 +531,7 @@
         >
           <a
             href="Projects.html"
-            class="inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-gradient-to-br from-[#f12838] to-brand-red px-7 text-sm font-extrabold text-white shadow-glowRed transition hover:-translate-y-1 hover:scale-[1.02] sm:min-h-14 sm:min-w-[15rem] sm:text-base"
+            class="inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-gradient-to-br from-[#b11224] to-brand-red px-7 text-sm font-extrabold text-white shadow-glowRed transition hover:-translate-y-1 hover:scale-[1.02] sm:min-h-14 sm:min-w-[15rem] sm:text-base"
           >
             <svg
               class="h-5 w-5"
@@ -594,7 +594,7 @@
           <h2
             class="mt-5 text-4xl font-black tracking-normal text-white sm:text-5xl"
           >
-            See Our <span class="text-[#ff2638]">Work</span> In Action
+            See Our <span class="text-brand-red">Work</span> In Action
           </h2>
           <div class="mx-auto mt-4 h-px w-20 rounded-full bg-white/18"></div>
         </div>
@@ -911,6 +911,7 @@
           class="mx-auto aspect-video max-h-[82dvh] w-full rounded-2xl bg-black object-contain shadow-[0_30px_90px_rgba(0,0,0,0.5)]"
           controls
           playsinline
+          preload="auto"
         ></video>
         <p
           id="modal-video-caption"
@@ -936,16 +937,28 @@
         });
       }
 
+      function startModalVideo() {
+        const playPromise = modalVideo.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {
+            modalVideo.controls = true;
+          });
+        }
+      }
+
       function openVideoModal(src, title, modalStopTime) {
         modalVideo.src = src;
+        modalVideo.poster = "img/team photos/Video thumnail.jpg";
         modalVideo.dataset.stopTime = modalStopTime || "";
+        modalVideo.currentTime = 0;
         modalVideoCaption.textContent = title;
         videoModal.classList.remove("hidden");
         videoModal.classList.add("flex");
         videoModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("overflow-hidden");
+        modalVideo.addEventListener("canplay", startModalVideo, { once: true });
         modalVideo.load();
-        modalVideo.play().catch(() => {});
+        startModalVideo();
       }
 
       function closeVideoModal() {
@@ -953,7 +966,10 @@
         videoModal.classList.remove("flex");
         videoModal.setAttribute("aria-hidden", "true");
         modalVideo.pause();
+        modalVideo.removeEventListener("canplay", startModalVideo);
         modalVideo.removeAttribute("src");
+        modalVideo.removeAttribute("poster");
+        modalVideo.load();
         modalVideoCaption.textContent = "";
         document.body.classList.remove("overflow-hidden");
       }
